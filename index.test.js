@@ -1,29 +1,34 @@
+/**
+* @jest-environment jsdom
+*/
+
 const fs = require("fs");
 const path = require("path");
 const html = fs.readFileSync(path.resolve(__dirname, "./index.html"), "utf8");
 
+
 describe("Testing Client-Side index.html...", () => {
   beforeAll(() => {
     document.documentElement.innerHTML = html.toString();
-    console.log("Testing server is operational");
+    console.log(".............Testing html............");
   });
 
-
-//My tests of the title
-// change the title of the html file and run npm test to see if the tests responde correctly
-  it("check title has value", () => {
-    let docTitle = document.title;
-    expect(docTitle).not.toBe("");
+  it("check main section is there", () => {
+    let mainSec = document.querySelector('.mainSection')
+    expect(mainSec).toBeTruthy()
   });
 
-  it("check title ", () => {
+  it('tests there is a card does in the html', () => {
+    const card = document.querySelector('.card')
+    expect(card).toBeTruthy()
+  })
+
+  it("check title is 'Cars'", () => {
     let docTitle = document.title;
-    expect(docTitle).not.toBe("Cars");
-  });
-  it("check title has value", () => {
-    let docTitle = document.title;
-    expect(docTitle).toBe("Document");
-  });
-////////////////////////////////////////////////////////////////////////////////
-  
-}); // END OF DESCRIBE
+    expect(docTitle).toBe("Cars");
+  })
+
+
+
+
+});
