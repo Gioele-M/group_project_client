@@ -24,3 +24,9 @@ section{
     align-items: center;
     width: fit-content;
 }
+
+.modal-button{
+    
+position: sticky;
+
+}
