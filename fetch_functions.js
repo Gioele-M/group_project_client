@@ -2,33 +2,69 @@ const api_url ='https://dream-team-server.herokuapp.com/'
 
 import fetch from 'node-fetch'
 
-// const fetch = require('node-fetch')
+
+//They all return promises though
 
 
 //Get functions
 
 //Get all jokes
-async function getAllJokes(url=`${api_url}jokes/`){
+async function getAllJokes(){
     try{
+        let url=`${api_url}jokes/`
         const response = await fetch(url)
         const data = await response.json()
-        console.log(data)
+        return data
     }catch(err){
-        console.log(err)//{message: err.message}
+        console.log({message: err.message})
     }
 }
 
 
 
 
-getAllJokes()
-
-
 //Get jokes by ID
+async function getJokesById(id){
+    try{
+        let url=`${api_url}jokes/${id}`
+        const response = await fetch(url)
+        const data = await response.json()
+        // console.log(data)
+        return data
+    }catch(err){
+        console.log({message: err.message})
+    }
+}
+
+
+
+// function getJokesByIdFetch(id){
+//     let url=`${api_url}jokes/${id}`
+//     fetch(url)
+//         .then(response => response.json())
+//         .then(data =>{
+//             console.log(data)
+//             return data
+//         })
+// }
+
+
+
 
 
 //Get joke's comments
 
+async function getJokeComments(id){
+    try{
+        let url=`${api_url}jokes/${id}/comments`
+        const response = await fetch(url)
+        const data = await response.json()
+        // console.log(data)
+        return data
+    }catch(err){
+        console.log({message: err.message})
+    }
+}
 
 
 
