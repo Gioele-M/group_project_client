@@ -1,3 +1,5 @@
+// const { string } = require("yargs");
+
 function scripts (){
     console.log("I am JS")
 }
@@ -12,7 +14,7 @@ addNewComment.addEventListener('click',function(e){
 });
 
 //CLICK README
-const openComments = document.getElementById('commentLink')
+const openComments = document.getElementById('comment-link')
 const commentSection = document.getElementById('CommentSection')
 
 openComments.addEventListener('click',function(e){ 
@@ -20,6 +22,22 @@ openComments.addEventListener('click',function(e){
     console.log('readme clicked')
     
     commentSection.classList.add("DisplayOn")
+
+        
+    //////
+    // emoji counter example when readcomments is clicked
+
+    const lolCounter = document.getElementById("emoji-bar-lol");
+    const lolTally = 3 ///will be from the api
+    lolCounter.textContent = `🤣${lolTally}`
+
+    const mehCounter = document.getElementById("emoji-bar-meh");
+    const mehTally = 3 ///will be from the api
+    mehCounter.textContent = `😐${mehTally}`
+
+    let tomCounter = document.getElementById("emoji-bar-tom");
+    let tomTally = "3333333333333" ///will be from the api
+    tomCounter.textContent = `🍅${tomTally}`
 });
 
 
@@ -39,6 +57,11 @@ modalClose.addEventListener('click',function(){
     modalBg.classList.remove('bg-active');
 });
 ///////////////Nasims end
+
+
+
+
+
 
 
 module.exports= scripts
