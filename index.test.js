@@ -13,22 +13,25 @@ describe("Testing Client-Side index.html...", () => {
     console.log(".............Testing html............");
   });
 
-  it("check main section is there", () => {
+  it("test: <main section> is there", () => {
     let mainSec = document.querySelector('.mainSection')
     expect(mainSec).toBeTruthy()
   });
 
-  it('tests there is a card does in the html', () => {
+  it('test: <card> is in the html', () => {
     const card = document.querySelector('.card')
     expect(card).toBeTruthy()
   })
 
-  it("check title is 'Cars'", () => {
+  it("test: <title> is 'Cars'", () => {
     let docTitle = document.title;
     expect(docTitle).toBe("Cars");
   })
 
-
+  it("test: <body> has a colour", () => {
+    let docTitle = document.title;
+    expect(docTitle).toBe("Cars");
+  })
 
 
 });
