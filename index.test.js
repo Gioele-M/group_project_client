@@ -10,7 +10,9 @@ const html = fs.readFileSync(path.resolve(__dirname, "./index.html"), "utf8");
 describe("Testing Client-Side index.html...", () => {
   beforeAll(() => {
     document.documentElement.innerHTML = html.toString();
-    console.log(".............Testing html............");
+    const js = require ('./index')
+    const webdoc = require ('./index.html')  
+    console.log(".............Testing html............ ", document);
   });
 
   it("test: <main section> is there", () => {
@@ -28,9 +30,9 @@ describe("Testing Client-Side index.html...", () => {
     expect(docTitle).toBe("Cars");
   })
 
-  it("test: <body> has a colour", () => {
-    let docTitle = document.title;
-    expect(docTitle).toBe("Cars");
+  it("test: <body> has a certain text", () => {
+    let docBody = document.body;
+    expect(docBody).isContaining('Section');
   })
 
 
