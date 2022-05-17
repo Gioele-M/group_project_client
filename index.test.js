@@ -11,7 +11,6 @@ describe("Testing Client-Side index.html...", () => {
   beforeAll(() => {
     document.documentElement.innerHTML = html.toString();
     const js = require ('./index')
-    const webdoc = require ('./index.html')  
     console.log(".............Testing html............ ", document);
   });
 
