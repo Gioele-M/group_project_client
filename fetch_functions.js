@@ -76,10 +76,82 @@ async function getJokeComments(id){
 
 //Post a joke
 
+async function postJoke(request){
+    try{
+        let url=`${api_url}jokes/new`
+
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(request)
+        })
+        const data = await response.text()
+        console.log(data)
+        return data
+    }catch(err){
+        console.log({message: err.message})
+    }
+}
+
+let samplePostJoke = [{
+    "jokeText": "This is a sample text for posting a joke",
+    "jokeEmoji": "#",
+    "jokeReactions": {
+        "emoji1": 2,
+        "emoji2": 0,
+        "emoji3": 0 
+    },
+    "comments": [
+        {
+            "commentID": 1, 
+            "commentText": "This is a sample comment too!",
+            "commentReactions":{
+                "emoji1": 0, 
+                "emoji2": 0,
+                "emoji3": 0 
+            }
+        }
+    ]
+}]
+
+
+// postJoke(samplePostJoke)
+
 
 
 //Post a comment
+async function postComment(request, jokeId){
+    try{
+        let url=`${api_url}jokes/${jokeId}/comments/new`
 
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(request)
+        })
+        const data = await response.text()
+        console.log(data)
+        return data
+    }catch(err){
+        console.log({message: err.message})
+    }
+}
+
+const samplePostComment= {
+    "commentID": 123,
+    "commentText": "Test comment",
+    "commentReactions": {
+      "emoji1": 0,
+      "emoji2": 0,
+      "emoji3": 0
+    }
+}
+
+// postComment(samplePostComment, 1)
 
 
 
