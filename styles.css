@@ -28,7 +28,7 @@ h1{
     align-items: center;
     visibility: hidden;
     opacity: 0;
-    transition: visibility 0s opacity 0.5s;
+    transition: visibility 0s, opacity 0.5s;
 }
 
 .bg-active{
@@ -37,6 +37,7 @@ h1{
 }
 
 .modal {
+     position:relative ;
      background-color: white;
      width:30%;
      height: 30%;
@@ -63,3 +64,11 @@ h2{
 
 
 
+.modal-close{
+    position: absolute;
+    top:0;
+    right:0;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px;
+}
