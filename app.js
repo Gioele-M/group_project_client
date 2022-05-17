@@ -3,6 +3,5 @@ let modalBg = document.querySelector(".modal-bg")
 
 modalBtn.addEventListener('click',function(){
     console.log('has been clicked') 
-    //modalBg.classList.add('.bg-active');
-    modalBg.style.visibility = "visible";
+    modalBg.classList.add('bg-active');
 });
