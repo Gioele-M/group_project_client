@@ -11,6 +11,34 @@ addNewComment.addEventListener('click',function(e){
     document.createElement('ul')
 });
 
+//CLICK README
+const openComments = document.getElementById('commentLink')
+const commentSection = document.getElementById('CommentSection')
+
+openComments.addEventListener('click',function(e){ 
+    e.preventDefault()
+    console.log('readme clicked')
+    
+    commentSection.classList.add("DisplayOn")
+});
+
+
+
+///////////////Nasims start
+let modalBtn = document.querySelector(".modal-button")
+let modalBg = document.querySelector(".modal-bg")
+let modalClose = document.querySelector(".modal-close")
+
+modalBtn.addEventListener('click',function(){
+    console.log('has been clicked') 
+    modalBg.classList.add('bg-active');
+});
+
+modalClose.addEventListener('click',function(){
+    console.log('has been clicked') 
+    modalBg.classList.remove('bg-active');
+});
+///////////////Nasims end
 
 
 module.exports= scripts

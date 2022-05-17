@@ -4,13 +4,15 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> -->
     <link rel="stylesheet" href="index.css">
     <script defer src="index.js"></script>
     <title>Cars</title>
 </head>
 <body>
 
+<!-- BTN MODAL POPUP -->
+<button class="set-up-button">add set up</button>
 
 <!-- MAIN CARD -->
     <section class = "mainSection" id = "mainSecs" >
@@ -21,28 +23,34 @@
             <h6 class="card-subtitle mb-2 text-muted" id="mainCommentUserName">by Tom</h6>
             <!-- <a href="#" class="card-link" id="emojiBar">🤣😐🍅</a> -->
 
-            <div class="grid-container">
-
-                <div class="grid-child purple">
+                <div >
                     <a href="#" class="card-link" id="commentLink">Read all 12 comments</a>    
-
-                </div>
-            
-                <div class="grid-child green">
-                    <section class="emojiBar" >   
-                        <a href="#" class="card-link" id="emojiBarLol">🤣</a>
-                        <a href="#" class="card-link" id="emojiBarMeh">😐</a>
-                        <a href="#" class="card-link" id="emojiBarTom">🍅</a>
-                    </section>
                 </div>
             </div>
+        
+        <div class="CommentSection" id="CommentSection">
+            <h6>Users comments:</h6>
+
+            <div class="userCommentContainer">
+                <p class="userComment">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto quos eaque nesciunt possimus deleniti, et voluptate facere voluptates placeat exce</p>
+                <section class="emojiBar" >   
+                    <a href="#" class="card-link" id="emojiBarLol">🤣</a>
+                    <a href="#" class="card-link" id="emojiBarMeh">😐</a>
+                    <a href="#" class="card-link" id="emojiBarTom">🍅</a>
+                </section>
+            </div>
+
+
+            <!-- BTN MODAL POPUP -->
+            <button class="pushline-button">add punch line</button>
+
         </div>
+        
     </div>
         <br>
     </section>
 
-<!-- BTN MODAL POPUP -->
-    <button class="modal-button">Modal button</button>
+
 
 <!-- MODAL POPUP -->
     <div class="modal-bg">
