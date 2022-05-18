@@ -6,6 +6,30 @@
 //     console.log("I am JS")
 // }
 
+
+
+//////////////////////////// COUNTING LETTERS // only working for add setp
+document.addEventListener('keydown', updateCounter)
+
+function updateCounter(e) {
+    const postBox = document.getElementById ("user-comment");
+    console.log('key has been pressed in form box')
+    let numCharacters = postBox.value.length +1
+    console.log("num of characters:",numCharacters)
+}
+////////////////////////////END  COUNTING LETTERS
+
+
+
+
+//not working- display text 
+const characterCounter = document.getElementById('char-counter');
+characterCounter.textContent="changed :)"
+
+
+
+    
+
 //CLICK READ comments and display comment section
 ////////////////////////////////////////////////////
 const openComments = document.getElementById('comment-link')
@@ -43,11 +67,16 @@ openComments.addEventListener('click',function(e){
     let modalCloseX = document.querySelector(".modal-close-punchline")
 
 
+
     punchlineBTN.addEventListener('click',function(){
         console.log('add punchline clicked') 
         modalBg.classList.add('bg-active');
     });
     
+
+
+
+
         modalCloseX.addEventListener('click',function(){
         console.log('close punchline been clicked') 
         modalBg.classList.remove('bg-active');
@@ -69,16 +98,13 @@ let modalClose = document.querySelector(".modal-close")
 setupBTN.addEventListener('click',function(){
     console.log('setup btn clicked') 
     modalBg.classList.add('bg-active');
+  
 });
 
 modalClose.addEventListener('click',function(){
     console.log('close setup been clicked') 
     modalBg.classList.remove('bg-active');
 });
-
-
-
-
 
 
 
