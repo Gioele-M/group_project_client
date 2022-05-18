@@ -6,27 +6,26 @@ Main card sample
 
 section .main-section #mainSection {
     br
-    div .card #mainComment{
+    div .card #cardSection{
 
-        div .card-body{       !!!>>>>>>>Append comments to this
+        div .card-body #cardBodySection{       !!!>>>>>>>Append comments to this
 
 
-
-            p .card-text #cardText  >>>>Main joke text ++ 
+            p .card-text #cardText  >>>>Main joke text 
 
             section .emoji-bar{
-                a .card-link #emojiBarLolMain >>> 🤣{
+                a .card-link #emojiBarLolMain >>> 🤣 +++++ eventListener{
                     span .emoji-counter-main #emojiLolMain >>> n of clicks
                 }
-                a .card-link #emojiBerMehMain >>> 😐{
+                a .card-link #emojiBerMehMain >>> 😐 +++++ eventListener{
                     span .emoji-counter-main #emojiMehMain >>> n of clicks
                 }
-                a .card-link #emojiBarTomMain >>> 🍅{
+                a .card-link #emojiBarTomMain >>> 🍅 +++++ eventListener{
                     span .emoji-counter-main #emojiTomMain >>> n of clicks
                 }
             }
             div{
-                a .card-link #commentLink >>> text Read all ${} comments
+                a .card-link #commentLink >>> text Read all ${} comments +++++ eventListener
             }
 
 
@@ -37,8 +36,8 @@ section .main-section #mainSection {
         }
 
 
-        button .punchline-btn #punchlineBtn >>> text 'add punch line'
-        button .git-btn #gifBtn >>> text 'add gif'
+        button .punchline-btn #punchlineBtn >>> text 'add punch line' +++++ eventListener
+        button .git-btn #gifBtn >>> text 'add gif' +++++ eventListener
 
 
 
@@ -56,13 +55,13 @@ div .punchline-section #punchlineSection{
         p .userComment #userCommentText >>>>> punchline text
         section .emoji-bar{
             a .card-link #emojiBarLolComment >>> 🤣{
-                span .emoji-counter #emojiLolComment >>> n of click
+                span .emoji-counter #emojiLolComment >>> n of click +++++ eventListener
             }
             a .card-link #emojiBarMehComment >>> 😐{
-                span .emoji-counter #emojiMehComment >>> n of click
+                span .emoji-counter #emojiMehComment >>> n of click +++++ eventListener
             }
             a .card-link #emojiBarTomComment >>> 🍅{
-                span .emoji-counter #emojiTomComment >>> n of click
+                span .emoji-counter #emojiTomComment >>> n of click +++++ eventListener
             }
 
         }
@@ -72,12 +71,45 @@ div .punchline-section #punchlineSection{
 
 
 
+ALSO NEED TO LINK THE OTHER BUTTONS IN THE PAGE (add setup, gifs into clickable elements to choose which one to publish)
+
+
 
 
 
 */
 
 
+//These require eventlisteners!!!
+
+
+function makeMainSection(jokeHead, nLol, nMeh, nTom, nComments){
+    //Make main section
+    const mainSec = document.createElement('section')
+    mainSec.className = 'main-section'
+    mainSec.id = 'mainSection'
+
+    //{
+
+    //Make 2 br
+    const br1 = document.createElement('br')
+    const br2 = document.createElement('br')
+
+    //Make card div
+    const divCard = document.createElement('div')
+    divCard.className = 'card'
+    divCard.id = 'cardSection'
+
+    //{
+
+    //Make card body div ------ Append comments to this!!!! Maybe return reference!!!
+    const divCardBody = document.createElement('div')
+    divCardBody.className = 'card-body'
+    divCardBody.id = 'cardBodySection'
+
+    //{
+    
+    
 
 
 
@@ -90,7 +122,18 @@ div .punchline-section #punchlineSection{
 
 
 
+}
 
+
+
+
+
+
+
+
+
+
+function makeCommentSection(lineText, nLol, nMeh, nTom)
 
 
 
