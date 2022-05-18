@@ -210,7 +210,98 @@ async function deleteComment(request, jokeId){
 
 //Update joke text 
 
+async function updateJokeTextAndGiphy(request, jokeId){
+    try{
+        let url=`${api_url}jokes/${jokeId}`
+
+        const response = await fetch(url, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(request)
+        })
+        const data = await response.text()
+        console.log(data)
+    }catch(err){
+        console.log({message: err.message})
+    }
+}
+
+let samplePatchJokeText ={
+    "jokeText": "This it!"
+}
+let samplePatchJokeEmoji ={
+    "jokeEmoji": "This is the text that goes instead of link "
+}
+
+// updateJokeTextAndGiphy(samplePatchJokeText, 1)
+// updateJokeTextAndGiphy(samplePatchJokeEmoji, 1)
+
+
+
 //Add emoji 1-2-3 to joke
+
+
+
+async function updateJokeReactions(emojiN, jokeId){
+    try{
+
+        //Determine which emoji reaction will be added to post, then send request
+        const patchReaction1 = {
+            "jokeReactions": {
+            "emoji1": 1
+            }
+        }
+        const patchReaction2 = {
+            "jokeReactions": {
+            "emoji2": 1
+            }
+        }
+        const patchReaction3 = {
+            "jokeReactions": {
+            "emoji3": 1
+            }
+        }
+
+        let request
+
+        //Do switch statement instead
+        if(emojiN == 1){
+            request = patchReaction1
+        }
+        else if(emojiN == 2){
+            request = patchReaction2
+        }
+        else if(emojiN == 3){
+            request = patchReaction3
+        }else{
+            throw new Error('This emoji does not exist')
+        }
+
+        let url=`${api_url}jokes/${jokeId}`
+
+        const response = await fetch(url, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(request)
+        })
+        const data = await response.text()
+        console.log(data)
+
+    }catch(err){
+        console.log({message: err.message})
+    }
+}
+
+// updateJokeReactions(3, 1)
+
+
+
+
+
 
 
 
