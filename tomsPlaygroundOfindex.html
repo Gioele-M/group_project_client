@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-0evHe/X+R7YkIZDRvuzKMRqM+OrBnVFBL6DOitfPri4tjfHxaWutUpFmBp4vmVor" crossorigin="anonymous"> -->
+		<link rel="stylesheet" href="index.css" />
+		<script defer src="index.js"></script>
+		<script defer src="tomsPlaygroundOfindex.js"></script>
+		<title>Cars</title>
+	</head>
+	<body>
+<!-- ///////////////////////////// -->
+		<button class="darkmode-btn" id="darkmodebtn">darkmod</button>
+<!-- ///////////////////////////// -->
+		<!-- BTN setup POPUP -->
+		<button class="setup-btn" id="setup-btn">add set up</button>
+
+		<!-- MAIN CARD -->
+		<section class="main-section" id="main-section">
+			<br />
+			<div class="card" id="mainComment">
+				<div class="card-body">
+					<p class="card-text" id="card-text">
+						Chips, crisps, bangers 'n' mash, boil 'em mash 'em, stick'em in a
+						stew.
+					</p>
+					<!-- <h6 class="card-subtitle mb-2 text-muted" id="mainCommentUserName">by Tom</h6> -->
+					<!-- <a href="#" class="card-link" id="emojiBar">🤣😐🍅</a> -->
+					<section class="emoji-bar">
+						<a href="#" class="card-link" id="emoji-bar-lol"
+							>🤣 <span class="emoji-counter-main" id="emoji-lol">15</span></a
+						>
+						<a href="#" class="card-link" id="emoji-bar-meh"
+							>😐<span class="emoji-counter-main" id="emoji-meh">16</span></a
+						>
+						<a href="#" class="card-link" id="emoji-bar-tom"
+							>🍅<span class="emoji-counter-main" id="emoji-tom">48</span></a
+						>
+					</section>
+					<div>
+						<a href="#" class="card-link" id="comment-link"
+							>Read all 12 comments</a
+						>
+					</div>
+				</div>
+				<!-- ............................... -->
+				<!-- read comment section -->
+				<div class="punchline-section" id="punchline-section">
+					<h6>Users comments:</h6>
+
+					<div class="userCommentContainer">
+						<p class="userComment">
+							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto
+							quos eaque nesciunt possimus deleniti, et voluptate facere
+							voluptates placeat exce
+						</p>
+						<section class="emoji-bar">
+							<a href="#" class="card-link" id="emoji-bar-lol"
+								>🤣 <span class="emoji-counter" id="emoji-lol">15</span></a
+							>
+							<a href="#" class="card-link" id="emoji-bar-meh"
+								>😐<span class="emoji-counter" id="emoji-meh">16</span></a
+							>
+							<a href="#" class="card-link" id="emoji-bar-tom"
+								>🍅<span class="emoji-counter" id="emoji-tom">48</span></a
+							>
+						</section>
+					</div>
+
+					<!-- BTN MODAL POPUP -->
+					<button class="punchline-btn" id="punchline-btn">
+						add punch line
+					</button>
+					<!-- BTN MODAL gif -->
+					<button class="gif-btn" id="gifBtn">add gif</button>
+				</div>
+			</div>
+			<br />
+		</section>
+
+		<!-- //////////////////////Popups//////////////////////// -->
+		<!-- popup- setup -->
+		<div class="popup-setup-bg">
+			<div class="setup-modal modal">
+				<h2>Enter a Setup below</h2>
+				<form>
+					<label for="user-name">Name:</label>
+					<input id="user-name" type="text" />
+					<label for="user-comment">Setup</label>
+					<textarea
+						id="userComment"
+						maxlength="100"
+						placeholder="Start typing"
+					></textarea>
+					<button class="post">Post</button>
+					<span class="modal-close">X</span>
+					<p id="charcounter"></p>
+				</form>
+			</div>
+		</div>
+
+		<!-- popup- punchline -->
+		<div class="popup-punchline-bg">
+			<div class="modal">
+				<h2>Enter a Punchline below</h2>
+				<form>
+					<label for="user-name">Name:</label>
+					<input id="user-name" type="text" />
+					<label for="user-comment">Punchline</label>
+					<textarea
+						id="userCommentPunchlines"
+						maxlength="100"
+						placeholder="Start typing"
+					></textarea>
+					<button class="post">Post</button>
+					<span class="modal-close-punchline">X</span>
+					<p id="charcounterPunchLine"></p>
+				</form>
+			</div>
+		</div>
+
+            <!-- BTN MODAL POPUP -->
+            <!-- <button class="punchline-btn" id="punchline-btn">add punch line</button> -->
+            <!-- BTN MODAL gif -->
+            <!-- <button class="gif-btn" id="gifBtn">add gif</button> -->
+
+        </div>
+        
+    </div>
+        <br>
+    </section>
+
+
+<!-- //////////////////////Popups//////////////////////// -->
+<!-- popup- setup -->
+    <div class="popup-setup-bg">
+        <div class="setup-modal modal"> 
+            <h2> Enter a Setup below</h2>
+             <form>
+                 <label for="user-name">Name:</label>
+                 <input id="user-name" type="text" />
+                 <label for="user-comment">Setup</label>
+                 <textarea id="userComment" maxlength="100" placeholder="Start typing"></textarea>
+                 <button class="post">Post</button>
+                 <span class="modal-close">X</span>
+                 <p  id="charcounter"></p>
+             </form>
+            </div>
+      </div>  
+
+<!-- popup- punchline -->
+<div class="popup-punchline-bg">
+    <div class="modal"> 
+        <h2> Enter a Punchline below</h2>
+         <form>
+             <label for="user-name">Name:</label>
+             <input id="user-name" type="text" />
+             <label for="user-comment">Punchline</label>
+             <textarea id="userCommentPunchlines" maxlength="100" placeholder="Start typing"></textarea>
+             <button class="post">Post</button>
+             <span class="modal-close-punchline">X</span>
+             <p  id="charcounterPunchLine"></p>
+         </form>
+        </div>
+  </div>  
+
+<!-- popup- gif -->
+<div class="popup-gif-bg">
+    <div class="gif-modal modal"> 
+        <h2> Pick a GIF</h2>
+         <form>
+    
+            <!-- remove everything related to this search btn and text are below -->
+             <!-- <textarea id="userComment" maxlength="100" placeholder="add a gif"></textarea> -->
+             <!-- <button class="gifSearchBTN" id="gifSearchBTN">search</button> -->
+
+             <span class="modalCloseGif">X</span>
+             <div id="for-gifs">
+                <form>
+                    <label for="search">Search</label>
+                    <input id="search" type ="search" placeholder="search" />
+                    <button id="btn-search" type="submit">go</button>
+                </form>
+            </div>
+            
+            <div id="img-output"> <!-- GIF images go here-->
+            </div>  
+<!-- ///////////////////////toms flexbox for gifs -->
+             <section id="gifContainer">
+                <div class="gif-flex-container">
+                    <div>gif 1</div>
+                    <div>gif 2</div>
+                    <div>gif 3</div>  
+                    <div>gif 4</div>  
+                    <div>gif 5</div>  
+                  </div>
+             </section>
+
+         </form>
+        </div>
+  </div>  
+
+</body>
+</html>
