@@ -64,16 +64,16 @@ else {
 
 //turns on the SETUP modal 
 let setupBTN = document.getElementById("setup-btn")
-// let modalBg = document.querySelector(".popup-setup-bg")
-// let modalClose = document.querySelector(".modal-close")
+let modalBg = document.querySelector(".popup-setup-bg")
+let modalClose = document.querySelector(".modal-close")
 
 setupBTN.addEventListener('click',function(){
     console.log('setup btn clicked') 
-    // modalBg.classList.add('bg-active');
+    modalBg.classList.add('bg-active');
 });
 
 modalClose.addEventListener('click',function(){
-    console.log('has been clicked') 
+    console.log('close setup been clicked') 
     modalBg.classList.remove('bg-active');
 });
 
