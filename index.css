@@ -1,4 +1,4 @@
-section{
+.main-section{
     margin: 5%;
     background-color: rgb(70, 63, 63);
 
@@ -11,9 +11,10 @@ section{
 
 }
 
-.emojiBar {
+.emoji-bar {
+    margin: 3%;
     max-width: fit-content;
-    background-color: rgb(189, 176, 176);
+    background-color: rgb(245, 242, 242);
     /* margin: auto; */
 }
 
@@ -25,14 +26,14 @@ section{
     width: fit-content;
 }
 
-.modal-button{
+.punchline-btn{
 position: sticky;
 
 }
 
 
 
-.CommentSection{
+.punchline-section{
     margin: 2%;
     display: none;
     background-color: rgba(255, 255, 255, 0.5);

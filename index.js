@@ -1,3 +1,6 @@
+/////////i delete require yargs, it was breaking the code
+
+
 // const { string } = require("yargs");
 
 function scripts (){
@@ -13,19 +16,27 @@ addNewComment.addEventListener('click',function(e){
     document.createElement('ul')
 });
 
-//CLICK README
+
+
+
+////////////////////////////////////////////////////
+//CLICK READ comments and display comment section
 const openComments = document.getElementById('comment-link')
-const commentSection = document.getElementById('CommentSection')
+let punchlinesOpen = false 
 
 openComments.addEventListener('click',function(e){ 
     e.preventDefault()
-    console.log('readme clicked')
-    
-    commentSection.classList.add("DisplayOn")
+    console.log('read comments clicked')
+    const commentSection = document.getElementById('punchline-section')
 
-        
+    if (punchlinesOpen ===false) {
+    punchlinesOpen=true    
+    commentSection.classList.add("DisplayOn")
+    loadEmmojiBar()
+   
     //////
-    // emoji counter example when readcomments is clicked
+    // emoji counter example when read comments is clicked
+    function loadEmmojiBar () {
 
     const lolCounter = document.getElementById("emoji-bar-lol");
     const lolTally = 3 ///will be from the api
@@ -38,25 +49,36 @@ openComments.addEventListener('click',function(e){
     let tomCounter = document.getElementById("emoji-bar-tom");
     let tomTally = "3333333333333" ///will be from the api
     tomCounter.textContent = `🍅${tomTally}`
+
+}
+    ///////////////Nasims start
+    let punchlineBTN = document.getElementById("punchline-btn")
+    let modalBg = document.querySelector(".modal-bg")
+    let modalClose = document.querySelector(".modal-close")
+
+    punchlineBTN.addEventListener('click',function(){
+        console.log('has been clicked') 
+        modalBg.classList.add('bg-active');
+    });
+
+    modalClose.addEventListener('click',function(){
+        console.log('has been clicked') 
+        modalBg.classList.remove('bg-active');
+    });
+    ///////////////Nasims end
+}
+else {
+    punchlinesOpen=false
+    commentSection.classList.remove("DisplayOn")
+}
+
 });
 
 
 
-///////////////Nasims start
-let modalBtn = document.querySelector(".modal-button")
-let modalBg = document.querySelector(".modal-bg")
-let modalClose = document.querySelector(".modal-close")
 
-modalBtn.addEventListener('click',function(){
-    console.log('has been clicked') 
-    modalBg.classList.add('bg-active');
-});
 
-modalClose.addEventListener('click',function(){
-    console.log('has been clicked') 
-    modalBg.classList.remove('bg-active');
-});
-///////////////Nasims end
+
 
 
 
