@@ -9,22 +9,45 @@
 
 
 //////////////////////////// COUNTING LETTERS // only working for add setp
+const maxNumChara = 10;
+document.getElementById("userComment").setAttribute("maxlength", maxNumChara);
+document.getElementById("userCommentPunchlines").setAttribute("maxlength", maxNumChara);
+
+
 document.addEventListener('keydown', updateCounter)
+//add an if to check if the popbox is on?
+
+
 
 function updateCounter(e) {
-    const postBox = document.getElementById ("user-comment");
+    const postBox = document.getElementById ("userComment");
     console.log('key has been pressed in form box')
-    let numCharacters = postBox.value.length +1
+    let numCharacters = postBox.value.length
     console.log("num of characters:",numCharacters)
+
+    // update text counter
+    const characterCounter = document.getElementById('charcounter');
+    characterCounter.textContent=`Characters remaining: ${maxNumChara- numCharacters}`
+}
+
+
+
+function updateCounterPunchline(e) {
+    const postBox = document.getElementById ("userCommentPunchlines");
+    console.log('key has been pressed in form box')
+    let numCharacters = postBox.value.length
+    console.log("num of characters:",numCharacters)
+
+    // update text counter
+    const characterCounter = document.getElementById('charcounterPunchLine');
+    characterCounter.textContent=`Characters remaining: ${maxNumChara- numCharacters}`
 }
 ////////////////////////////END  COUNTING LETTERS
 
 
 
 
-//not working- display text 
-const characterCounter = document.getElementById('char-counter');
-characterCounter.textContent="changed :)"
+
 
 
 
@@ -67,15 +90,12 @@ openComments.addEventListener('click',function(e){
     let modalCloseX = document.querySelector(".modal-close-punchline")
 
 
-
     punchlineBTN.addEventListener('click',function(){
         console.log('add punchline clicked') 
         modalBg.classList.add('bg-active');
     });
     
-
-
-
+        document.addEventListener('keydown', updateCounterPunchline)
 
         modalCloseX.addEventListener('click',function(){
         console.log('close punchline been clicked') 
