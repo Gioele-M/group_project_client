@@ -9,7 +9,7 @@
 
 
 //////////////////////////// COUNTING LETTERS // only working for add setp
-const maxNumChara = 10;
+const maxNumChara = 100;
 document.getElementById("userComment").setAttribute("maxlength", maxNumChara);
 document.getElementById("userCommentPunchlines").setAttribute("maxlength", maxNumChara);
 
@@ -108,7 +108,40 @@ else {
     punchlinesOpen=false
     commentSection.classList.remove("DisplayOn")
 }
-});
+
+
+
+    //turns on the gif add modal 
+    let gifBTN = document.getElementById("gifBtn")
+    let modalBgGif = document.querySelector(".popup-gif-bg")
+    // let modalCloseX = document.querySelector(".modal-close-punchline")
+
+
+    gifBTN.addEventListener('click',function(){
+        console.log('add gif clicked') 
+    
+        modalBgGif.classList.add('bg-active');
+//     });
+    
+//         document.addEventListener('keydown', updateCounterPunchline)
+
+//         modalCloseX.addEventListener('click',function(){
+//         console.log('close punchline been clicked') 
+//         modalBg.classList.remove('bg-active');
+//     });
+
+//     ///////////////
+// }
+// else {
+//     punchlinesOpen=false
+//     commentSection.classList.remove("DisplayOn")
+// }
+
+
+
+})
+
+
 
 //turns on the SETUP modal 
 let setupBTN = document.getElementById("setup-btn")
@@ -132,5 +165,5 @@ modalClose.addEventListener('click',function(){
 
 
 
-
+})
 // module.exports= scripts

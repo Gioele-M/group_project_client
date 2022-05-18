@@ -14,13 +14,15 @@
 <!-- BTN setup POPUP -->
 <button class="setup-btn" id="setup-btn">add set up</button>
 
+
+
 <!-- MAIN CARD -->
     <section class = "main-section" id = "main-section" >
         <br>
         <div class="card" id="mainComment" >
             <div class="card-body" >
             <p class="card-text" id="card-text">Chips, crisps, bangers 'n' mash, boil 'em mash 'em, stick'em in a stew.</p>
-            <h6 class="card-subtitle mb-2 text-muted" id="mainCommentUserName">by Tom</h6>
+            <!-- <h6 class="card-subtitle mb-2 text-muted" id="mainCommentUserName">by Tom</h6> -->
             <!-- <a href="#" class="card-link" id="emojiBar">🤣😐🍅</a> -->
 
                 <div >
@@ -41,10 +43,10 @@
                 </section>
             </div>
 
-
             <!-- BTN MODAL POPUP -->
             <button class="punchline-btn" id="punchline-btn">add punch line</button>
-
+            <!-- BTN MODAL gif -->
+            <button class="gif-btn" id="gifBtn">add gif</button>
 
         </div>
         
@@ -86,7 +88,18 @@
         </div>
   </div>  
 
-
+<!-- popup- gif -->
+<div class="popup-gif-bg">
+    <div class="gif-modal modal"> 
+        <h2> Pick a GIF</h2>
+         <form>
+             <textarea id="userComment" maxlength="100" placeholder="add a gif"></textarea>
+             <button class="post">Post</button>
+             <span class="modal-close">X</span>
+             <p  id="charcounter"></p>
+         </form>
+        </div>
+  </div>  
 
 </body>
 </html>
