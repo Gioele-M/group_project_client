@@ -1,29 +1,15 @@
 /////////i delete require yargs, it was breaking the code
-
-
 // const { string } = require("yargs");
 
+///this func is for testing with jest
 function scripts (){
     console.log("I am JS")
 }
 
-// const addNewComment = document.getElementsByClassName('btn')
-const addNewComment = document.querySelector('form')
-
-addNewComment.addEventListener('click',function(e){ 
-    e.preventDefault()
-    console.log('btn clicked')
-    document.createElement('ul')
-});
-
-
-
-
-////////////////////////////////////////////////////
 //CLICK READ comments and display comment section
+////////////////////////////////////////////////////
 const openComments = document.getElementById('comment-link')
 let punchlinesOpen = false 
-
 openComments.addEventListener('click',function(e){ 
     e.preventDefault()
     console.log('read comments clicked')
@@ -53,7 +39,7 @@ openComments.addEventListener('click',function(e){
 }
     ///////////////Nasims start
     let punchlineBTN = document.getElementById("punchline-btn")
-    let modalBg = document.querySelector(".modal-bg")
+    let modalBg = document.querySelector(".popup-punchline-bg")
     let modalClose = document.querySelector(".modal-close")
 
     punchlineBTN.addEventListener('click',function(){
@@ -74,6 +60,22 @@ else {
 
 });
 
+
+
+//turns on the SETUP modal 
+let setupBTN = document.getElementById("setup-btn")
+// let modalBg = document.querySelector(".popup-setup-bg")
+// let modalClose = document.querySelector(".modal-close")
+
+setupBTN.addEventListener('click',function(){
+    console.log('setup btn clicked') 
+    // modalBg.classList.add('bg-active');
+});
+
+modalClose.addEventListener('click',function(){
+    console.log('has been clicked') 
+    modalBg.classList.remove('bg-active');
+});
 
 
 
