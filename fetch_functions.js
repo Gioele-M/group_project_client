@@ -306,7 +306,83 @@ async function updateJokeReactions(emojiN, jokeId){
 
 
 //Update comment text
+//Where do I insert comment id?
+async function updateCommentText(request, jokeId){
+    try{
+        let url=`${api_url}jokes/${jokeId}/comments`
+
+        const response = await fetch(url, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(request)
+        })
+        const data = await response.text()
+        console.log(data)
+
+    }catch(err){
+        console.log({message: err.message})
+    }
+}
+
+let samplePatchCommentText = {
+    "commentID": 1,
+    "commentText": "Test comment 2"
+}
+
+// updateCommentText(samplePatchCommentText, 1)
+
+
 //Add emoji 1-2-3 to comment
+async function updateCommentReaction(emojiN, jokeId, commentID){
+
+    //Determine request to send
+    let request
+    //Do switch statement instead
+    if(emojiN == 1){
+        request = {
+            "commentID": commentID,
+            "commentReactions": {
+              "emoji1": 1
+            }
+        }
+    }
+    else if(emojiN == 2){
+        request = request = {
+            "commentID": commentID,
+            "commentReactions": {
+              "emoji2": 1
+            }
+        }
+    }
+    else if(emojiN == 3){
+        request = request = {
+            "commentID": commentID,
+            "commentReactions": {
+              "emoji3": 1
+            }
+        }
+    }else{
+        throw new Error('This emoji does not exist')
+    }
+
+    let url=`${api_url}jokes/${jokeId}/comments`
+
+    const response = await fetch(url, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(request)
+    })
+    const data = await response.text()
+    console.log(data)
+
+}
+
+
+updateCommentReaction(1,1,1)
 
 
 
