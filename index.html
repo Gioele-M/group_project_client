@@ -118,9 +118,9 @@
 		</div>
 
             <!-- BTN MODAL POPUP -->
-            <button class="punchline-btn" id="punchline-btn">add punch line</button>
+            <!-- <button class="punchline-btn" id="punchline-btn">add punch line</button> -->
             <!-- BTN MODAL gif -->
-            <button class="gif-btn" id="gifBtn">add gif</button>
+            <!-- <button class="gif-btn" id="gifBtn">add gif</button> -->
 
         </div>
         
@@ -167,9 +167,23 @@
     <div class="gif-modal modal"> 
         <h2> Pick a GIF</h2>
          <form>
-             <textarea id="userComment" maxlength="100" placeholder="add a gif"></textarea>
-             <button class="gifSearchBTN" id="gifSearchBTN">search</button>
+    
+            <!-- remove everything related to this search btn and text are below -->
+             <!-- <textarea id="userComment" maxlength="100" placeholder="add a gif"></textarea> -->
+             <!-- <button class="gifSearchBTN" id="gifSearchBTN">search</button> -->
+
              <span class="modalCloseGif">X</span>
+             <div id="for-gifs">
+                <form>
+                    <label for="search">Search</label>
+                    <input id="search" type ="search" placeholder="search" />
+                    <button id="btn-search" type="submit">go</button>
+                </form>
+            </div>
+            
+            <div id="img-output"> <!-- GIF images go here-->
+            </div>  
+<!-- ///////////////////////toms flexbox for gifs -->
              <section id="gifContainer">
                 <div class="gif-flex-container">
                     <div>gif 1</div>

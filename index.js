@@ -17,8 +17,6 @@ document.getElementById("userCommentPunchlines").setAttribute("maxlength", maxNu
 document.addEventListener('keydown', updateCounter)
 //add an if to check if the popbox is on?
 
-
-
 function updateCounter(e) {
     const postBox = document.getElementById ("userComment");
     console.log('key has been pressed in form box')
@@ -29,8 +27,6 @@ function updateCounter(e) {
     const characterCounter = document.getElementById('charcounter');
     characterCounter.textContent=`Characters remaining: ${maxNumChara- numCharacters}`
 }
-
-
 
 function updateCounterPunchline(e) {
     const postBox = document.getElementById ("userCommentPunchlines");
@@ -46,6 +42,24 @@ function updateCounterPunchline(e) {
 
 
 
+
+//////////////////////////////////
+//turns on the SETUP modal 
+let setupBTN = document.getElementById("setup-btn")
+let modalBg = document.querySelector(".popup-setup-bg")
+let modalClose = document.querySelector(".modal-close")
+
+setupBTN.addEventListener('click',function(){
+    console.log('setup btn clicked') 
+    modalBg.classList.add('bg-active');
+  
+});
+
+modalClose.addEventListener('click',function(){
+    console.log('close setup been clicked') 
+    modalBg.classList.remove('bg-active');
+});
+////////////////////////////////////////
 
 
 
@@ -135,7 +149,7 @@ else {
 
 
 
-    //////////////gif search image popup
+//////////////gif search image popup
     const gifSearchBTN = document.getElementById("gifSearchBTN")
     const gifImageBox = document.getElementById("gifContainer")
 
@@ -157,28 +171,63 @@ else {
 
 
 
-//turns on the SETUP modal 
-let setupBTN = document.getElementById("setup-btn")
-let modalBg = document.querySelector(".popup-setup-bg")
-let modalClose = document.querySelector(".modal-close")
 
-setupBTN.addEventListener('click',function(){
-    console.log('setup btn clicked') 
-    modalBg.classList.add('bg-active');
+
+
+
+})
+})
+
+
+
+////////////////gif
+const apikey = "2EIRww430F9ESfgx9QMKbvuEG2QxXsle"
+
+let searchBtn = document.getElementById('btn-search')
+
+//document.addEventListener("content", init);
   
-});
-
-modalClose.addEventListener('click',function(){
-    console.log('close setup been clicked') 
-    modalBg.classList.remove('bg-active');
-});
-
-
+searchBtn.addEventListener("click", e => {
+    e.preventDefault();
+    let path = `http://api.giphy.com/v1/gifs/search?api_key=${apikey}&limit=5&q=`;
+    let str = document.getElementById("search").value.trim();
+    path += str;
+    console.log("path", path)
 
 
+    fetch(path)
+        .then(response => response.json())
+        .then(content =>{
+            console.log(content)
+    
+   let resultsHtml = ''
+    
+    content.data.forEach(function (obj){
+    let url = obj.images.fixed_width.url
+    const width = obj.images.fixed_width.width
+    const height = obj.images.fixed_height.height
+    resultsHtml += `<img src="${url}" 
+                     width="${width}" 
+                    height="${height}"/>`
+    
+     document.getElementById("img-output").innerHTML = resultsHtml;
+    
+    })
+       
+    })
+        .catch(error => {
+        console.log("error")})
+    
+    
+    })
 
 
 
-})
-})
+
+
+
+
+
+
+
 // module.exports= scripts
