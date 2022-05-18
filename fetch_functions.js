@@ -14,12 +14,14 @@ async function getAllJokes(){
         let url=`${api_url}jokes/`
         const response = await fetch(url)
         const data = await response.json()
+        console.log(data)
         return data
     }catch(err){
         console.log({message: err.message})
     }
 }
 
+getAllJokes()
 
 
 
@@ -35,20 +37,6 @@ async function getJokesById(id){
         console.log({message: err.message})
     }
 }
-
-
-
-// function getJokesByIdFetch(id){
-//     let url=`${api_url}jokes/${id}`
-//     fetch(url)
-//         .then(response => response.json())
-//         .then(data =>{
-//             console.log(data)
-//             return data
-//         })
-// }
-
-
 
 
 
@@ -382,7 +370,7 @@ async function updateCommentReaction(emojiN, jokeId, commentID){
 }
 
 
-updateCommentReaction(1,1,1)
+// updateCommentReaction(1,1,1)
 
 
 
