@@ -2,9 +2,9 @@
 // const { string } = require("yargs");
 
 ///this func is for testing with jest
-function scripts (){
-    console.log("I am JS")
-}
+// function scripts (){
+//     console.log("I am JS")
+// }
 
 //CLICK READ comments and display comment section
 ////////////////////////////////////////////////////
@@ -37,30 +37,29 @@ openComments.addEventListener('click',function(e){
     tomCounter.textContent = `🍅${tomTally}`
 
 }
-    ///////////////Nasims start
+    //turns on the punchline modal 
     let punchlineBTN = document.getElementById("punchline-btn")
     let modalBg = document.querySelector(".popup-punchline-bg")
-    let modalClose = document.querySelector(".modal-close")
+    let modalCloseX = document.querySelector(".modal-close-punchline")
+
 
     punchlineBTN.addEventListener('click',function(){
-        console.log('has been clicked') 
+        console.log('add punchline clicked') 
         modalBg.classList.add('bg-active');
     });
-
-    modalClose.addEventListener('click',function(){
-        console.log('has been clicked') 
+    
+        modalCloseX.addEventListener('click',function(){
+        console.log('close punchline been clicked') 
         modalBg.classList.remove('bg-active');
     });
-    ///////////////Nasims end
+
+    ///////////////
 }
 else {
     punchlinesOpen=false
     commentSection.classList.remove("DisplayOn")
 }
-
 });
-
-
 
 //turns on the SETUP modal 
 let setupBTN = document.getElementById("setup-btn")
@@ -88,4 +87,4 @@ modalClose.addEventListener('click',function(){
 
 
 
-module.exports= scripts
+// module.exports= scripts
