@@ -142,7 +142,7 @@ else {
     gifSearchBTN.addEventListener('click',function(){
         console.log('search gif clicked') 
         gifImageBox.classList.add('bg-active');
-        gifImageBox.style.visibility=
+        gifImageBox.style.visibility=false
  })
 
 

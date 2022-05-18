@@ -1,83 +1,74 @@
-.main-section{
-    margin: 5%;
-    background-color: rgb(70, 63, 63);
-    border-radius: 5px 5px;
-    
-
+.main-section {
+	margin: 5%;
+	background-color: rgb(70, 63, 63);
+	border-radius: 5px 5px;
 }
 
 .card {
-
-    background-color: rgb(168, 202, 231);
-    margin: 5%;
-    border-radius: 2px 5px;
-
+	background-color: rgb(168, 202, 231);
+	margin: 5%;
+	border-radius: 2px 5px;
 }
 
 .emoji-bar {
-    margin: 3%;
-    max-width: fit-content;
-    background-color: rgb(245, 242, 242);
-    /* margin: auto; */
+	margin: 3%;
+	max-width: fit-content;
+	background-color: rgb(245, 242, 242);
+	/* margin: auto; */
 }
 
 .grid-container {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    /* grid-gap: 20px; */
-    align-items: center;
-    width: fit-content;
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	/* grid-gap: 20px; */
+	align-items: center;
+	width: fit-content;
 }
 
-.punchline-btn{
-position: sticky;
-
+.punchline-btn {
+	position: sticky;
 }
 
-
-
-.punchline-section{
-    margin: 2%;
-    display: none;
-    background-color: rgba(255, 255, 255, 0.5);
+.punchline-section {
+	margin: 2%;
+	display: none;
+	background-color: rgba(255, 255, 255, 0.5);
 }
 
-
-.DisplayOn{
-    display: block;
+.DisplayOn {
+	display: block;
 }
-
 
 /* /////////////////////////////////nasims */
 
-.popup-setup-bg{
-    position: fixed;
-    top:0;
-    left:0;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(0,0,0,0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s, opacity 0.5s;
+.popup-setup-bg {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s, opacity 0.5s;
 }
 
-.popup-punchline-bg{
-    position: fixed;
-    top:0;
-    left:0;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(0,0,0,0.5);
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s, opacity 0.5s;
+.popup-punchline-bg {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100vh;
+	background-color: rgba(0, 0, 0, 0.5);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	visibility: hidden;
+	opacity: 0;
+	transition: visibility 0s, opacity 0.5s;
 }
 
 
@@ -113,40 +104,37 @@ position: sticky;
 }
 
 .modal {
-     position:relative ;
-     background-color: white;
-     width:30%;
-     height: 30%;
-   
+	position: relative;
+	background-color: white;
+	width: 30%;
+	height: 30%;
 }
-form{
-     display: flex;
-     justify-content: space-around;
-     align-items: center;
-     flex-direction: column;
-}
-
-h2{
-    text-align: center;
+form {
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-direction: column;
 }
 
-.post{
-     padding: 10px 20px;
-     background-color: rgb(66, 138, 180);
-     color: white;
-     font-weight: 500;
-     margin-top: 10px;
+h2 {
+	text-align: center;
 }
 
+.post {
+	padding: 10px 20px;
+	background-color: rgb(66, 138, 180);
+	color: white;
+	font-weight: 500;
+	margin-top: 10px;
+}
 
-
-.modal-close{
-    position: absolute;
-    top:0;
-    right:0;
-    font-weight: bold;
-    cursor: pointer;
-    padding: 10px;
+.modal-close {
+	position: absolute;
+	top: 0;
+	right: 0;
+	font-weight: bold;
+	cursor: pointer;
+	padding: 10px;
 }
 
 .modal-close-punchline{
@@ -166,3 +154,12 @@ h2{
     padding: 20px;
     font-size: 70px;
   }
+
+
+
+.emoji-counter,
+.emoji-main {
+	border: 0.5px solid hotpink;
+	padding: 10px;
+	border-radius: 50%;
+}
