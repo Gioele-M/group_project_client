@@ -114,21 +114,36 @@ else {
     //turns on the gif add modal 
     let gifBTN = document.getElementById("gifBtn")
     let modalBgGif = document.querySelector(".popup-gif-bg")
-    // let modalCloseX = document.querySelector(".modal-close-punchline")
+    let modalCloseGif = document.querySelector(".modalCloseGif")
 
 
     gifBTN.addEventListener('click',function(){
         console.log('add gif clicked') 
     
         modalBgGif.classList.add('bg-active');
+
+
 //     });
     
-//         document.addEventListener('keydown', updateCounterPunchline)
+        // document.addEventListener('keydown', updateCounterPunchline)
 
-//         modalCloseX.addEventListener('click',function(){
-//         console.log('close punchline been clicked') 
-//         modalBg.classList.remove('bg-active');
-//     });
+        modalCloseGif.addEventListener('click',function(){
+        console.log('close gif popup been clicked') 
+        modalBgGif.classList.remove('bg-active');
+    });
+
+
+
+
+    //////////////gif search image popup
+    let gifSearchBTN = document.querySelector("gifSearchBTN")
+    const gifImageBox = document.getElementsByClassName("gifContainer")
+
+    gifSearchBTN.addEventListener('click',function(){
+        console.log('search gif clicked') 
+        gifImageBox.classList.remove('bg-active');
+ })
+
 
 //     ///////////////
 // }
@@ -138,8 +153,6 @@ else {
 // }
 
 
-
-})
 
 
 
@@ -165,5 +178,6 @@ modalClose.addEventListener('click',function(){
 
 
 
+})
 })
 // module.exports= scripts
