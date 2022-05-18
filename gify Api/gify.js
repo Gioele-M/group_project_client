@@ -22,7 +22,11 @@ searchBtn.addEventListener("click", e => {
     
     content.data.forEach(function (obj){
     let url = obj.images.fixed_width.url
-     resultsHtml += `<img src="${url}"/>`
+    const width = obj.images.fixed_width.width
+    const height = obj.images.fixed_height.height
+    resultsHtml += `<img src="${url}" 
+                     width="${width}" 
+                    height="${height}"/>`
     
      document.getElementById("img-output").innerHTML = resultsHtml;
     
@@ -34,4 +38,5 @@ searchBtn.addEventListener("click", e => {
     
     
     })
+
 
