@@ -1,6 +1,8 @@
-section{
+.main-section{
     margin: 5%;
     background-color: rgb(70, 63, 63);
+    border-radius: 5px 5px;
+    
 
 }
 
@@ -8,12 +10,14 @@ section{
 
     background-color: rgb(168, 202, 231);
     margin: 5%;
+    border-radius: 2px 5px;
 
 }
 
-.emojiBar {
+.emoji-bar {
+    margin: 3%;
     max-width: fit-content;
-    background-color: rgb(189, 176, 176);
+    background-color: rgb(245, 242, 242);
     /* margin: auto; */
 }
 
@@ -25,14 +29,14 @@ section{
     width: fit-content;
 }
 
-.modal-button{
+.punchline-btn{
 position: sticky;
 
 }
 
 
 
-.CommentSection{
+.punchline-section{
     margin: 2%;
     display: none;
     background-color: rgba(255, 255, 255, 0.5);
@@ -46,7 +50,22 @@ position: sticky;
 
 /* /////////////////////////////////nasims */
 
-.modal-bg{
+.popup-setup-bg{
+    position: fixed;
+    top:0;
+    left:0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0s, opacity 0.5s;
+}
+
+.popup-punchline-bg{
     position: fixed;
     top:0;
     left:0;
@@ -95,6 +114,15 @@ h2{
 
 
 .modal-close{
+    position: absolute;
+    top:0;
+    right:0;
+    font-weight: bold;
+    cursor: pointer;
+    padding: 10px;
+}
+
+.modal-close-punchline{
     position: absolute;
     top:0;
     right:0;
