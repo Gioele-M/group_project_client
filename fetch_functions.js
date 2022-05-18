@@ -142,7 +142,7 @@ async function postComment(request, jokeId){
 }
 
 const samplePostComment= {
-    "commentID": 123,
+    "commentID": 3,
     "commentText": "Test comment",
     "commentReactions": {
       "emoji1": 0,
@@ -159,21 +159,54 @@ const samplePostComment= {
 
 //Delete functions
 
-
 //Delete a joke
+async function deleteJoke(jokeId){
+    try{
+        let url=`${api_url}jokes/${jokeId}`
+
+        const response = await fetch(url, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'none'
+            }
+        })
+        const data = await response.text()
+        console.log(data)
+    }catch(err){
+        console.log({message: err.message})
+    }
+}
+
+// deleteJoke(2)
 
 
 //Delete a comment
 
+async function deleteComment(request, jokeId){
+    try{
+        let url=`${api_url}jokes/${jokeId}/comments/`
+
+        const response = await fetch(url, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(request)
+        })
+        const data = await response.text()
+        console.log(data)
+    }catch(err){
+        console.log({message: err.message})
+    }
+}
+
+// deleteComment(samplePostComment, 1)
 
 
 
 
 
-
-
-
-//Patch functions
+//Patch functions!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
 //Update joke text 
 
