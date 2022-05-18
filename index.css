@@ -98,6 +98,15 @@ position: sticky;
 }
 
 
+.gif-flex-container {
+    display: flex;
+    background-color: rgb(202, 125, 190);
+    visibility: hidden;
+    /* opacity: 0;  */
+    transition: visibility 0s, opacity 0.5s;
+  }
+
+
 .bg-active{
     visibility: visible;
     opacity: 1;
@@ -150,14 +159,6 @@ h2{
 }
 
 
-
-.gif-flex-container {
-    display: flex;
-    background-color: rgb(202, 125, 190);
-    visibility: hidden;
-    opacity: 0;
-    transition: visibility 0s, opacity 0.5s;
-  }
 
   .gif-flex-container > div {
     background-color: #f1f1f1;

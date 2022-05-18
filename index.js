@@ -136,12 +136,13 @@ else {
 
 
     //////////////gif search image popup
-    let gifSearchBTN = document.querySelector("gifSearchBTN")
-    const gifImageBox = document.getElementsByClassName("gifContainer")
+    const gifSearchBTN = document.getElementById("gifSearchBTN")
+    const gifImageBox = document.getElementById("gifContainer")
 
     gifSearchBTN.addEventListener('click',function(){
         console.log('search gif clicked') 
-        gifImageBox.classList.remove('bg-active');
+        gifImageBox.classList.add('bg-active');
+        gifImageBox.style.visibility=
  })
 
 
