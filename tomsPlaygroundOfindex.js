@@ -20,3 +20,11 @@ else {
    
 
 })
+
+const aboutbtn = document.getElementById("aboutbtn")
+
+aboutbtn.addEventListener('click',function(){
+    
+    console.log('about clicked') 
+    alert("THIS IS MADE BY NASIM, TOM, REBECCA, GIO");
+})
