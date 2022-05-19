@@ -25,6 +25,7 @@
     "browserslist": "^4.20.3",
     "bser": "^2.1.1",
     "buffer-from": "^1.1.2",
+    "bundler": "^0.8.0",
     "callsites": "^3.1.0",
     "camelcase": "^5.3.1",
     "caniuse-lite": "^1.0.30001341",
@@ -201,7 +202,8 @@
   },
   "type": "module",
   "scripts": {
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "bundler": "watchify ./reference.js -o bundle.js"
   },
   "repository": {
     "type": "git",

@@ -1,6 +1,6 @@
 const api_url ='https://dream-team-server.herokuapp.com/'
 
-import fetch from 'node-fetch'
+// import fetch from 'node-fetch'
 
 
 //They all return promises though
@@ -373,4 +373,5 @@ async function updateCommentReaction(emojiN, jokeId, commentID){
 // updateCommentReaction(1,1,1)
 
 
+module.exports = {getAllJokes, getJokesById, getJokeComments, postJoke, postComment,deleteJoke, deleteComment,updateJokeTextAndGiphy, updateJokeReactions, updateCommentText, updateCommentReaction}
 
