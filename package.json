@@ -201,7 +201,8 @@
   },
   "type": "module",
   "scripts": {
-    "test": "jest --watchAll"
+    "test": "jest --watchAll",
+    "bundler": "watchify ./reference.js -o bundle.js"
   },
   "repository": {
     "type": "git",

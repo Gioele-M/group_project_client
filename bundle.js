@@ -1,3 +1,4 @@
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 // let setupBTN = document.getElementById("setupBtn")
 // let modalBg = document.querySelector(".popup-setup-bg")
 // let modalClose = document.querySelector(".modal-close")
@@ -610,3 +611,570 @@ module.exports = {makeMainSection, makeCommentSection}
 // }
 
 // getAllJokes()
+
+},{}],2:[function(require,module,exports){
+const api_url ='https://dream-team-server.herokuapp.com/'
+
+// import fetch from 'node-fetch'
+
+
+
+//They all return promises though
+
+
+//Get functions
+
+//Get all jokes
+async function getAllJokes(){
+    try{
+        let url=`${api_url}jokes/`
+        const response = await fetch(url)
+        const data = await response.json()
+        console.log(data)
+        return data
+    }catch(err){
+        console.log({message: err.message})
+    }
+}
+
+// getAllJokes()
+
+
+
+//Get jokes by ID
+async function getJokesById(id){
+    try{
+        let url=`${api_url}jokes/${id}`
+        const response = await fetch(url)
+        const data = await response.json()
+        // console.log(data)
+        return data
+    }catch(err){
+        console.log({message: err.message})
+    }
+}
+
+
+
+//Get joke's comments
+
+async function getJokeComments(id){
+    try{
+        let url=`${api_url}jokes/${id}/comments`
+        const response = await fetch(url)
+        const data = await response.json()
+        // console.log(data)
+        return data
+    }catch(err){
+        console.log({message: err.message})
+    }
+}
+
+
+
+
+
+
+
+//Post functions
+
+//Post a joke
+
+async function postJoke(request){
+    try{
+        let url=`${api_url}jokes/new`
+
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(request)
+        })
+        const data = await response.text()
+        console.log(data)
+        return data
+    }catch(err){
+        console.log({message: err.message})
+    }
+}
+
+let samplePostJoke = [{
+    "jokeText": "This is a sample text for posting a joke",
+    "jokeEmoji": "#",
+    "jokeReactions": {
+        "emoji1": 2,
+        "emoji2": 0,
+        "emoji3": 0 
+    },
+    "comments": [
+        {
+            "commentID": 1, 
+            "commentText": "This is a sample comment too!",
+            "commentReactions":{
+                "emoji1": 0, 
+                "emoji2": 0,
+                "emoji3": 0 
+            }
+        }
+    ]
+}]
+
+
+// postJoke(samplePostJoke)
+
+
+
+//Post a comment
+async function postComment(request, jokeId){
+    try{
+        let url=`${api_url}jokes/${jokeId}/comments/new`
+
+        const response = await fetch(url, {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(request)
+        })
+        const data = await response.text()
+        console.log(data)
+        return data
+    }catch(err){
+        console.log({message: err.message})
+    }
+}
+
+const samplePostComment= {
+    "commentID": 3,
+    "commentText": "Test comment",
+    "commentReactions": {
+      "emoji1": 0,
+      "emoji2": 0,
+      "emoji3": 0
+    }
+}
+
+// postComment(samplePostComment, 1)
+
+
+
+
+
+//Delete functions
+
+//Delete a joke
+async function deleteJoke(jokeId){
+    try{
+        let url=`${api_url}jokes/${jokeId}`
+
+        const response = await fetch(url, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'none'
+            }
+        })
+        const data = await response.text()
+        console.log(data)
+    }catch(err){
+        console.log({message: err.message})
+    }
+}
+
+// deleteJoke(2)
+
+
+//Delete a comment
+
+async function deleteComment(request, jokeId){
+    try{
+        let url=`${api_url}jokes/${jokeId}/comments/`
+
+        const response = await fetch(url, {
+            method: 'DELETE',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(request)
+        })
+        const data = await response.text()
+        console.log(data)
+    }catch(err){
+        console.log({message: err.message})
+    }
+}
+
+// deleteComment(samplePostComment, 1)
+
+
+
+
+
+//Patch functions!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
+//Update joke text 
+
+async function updateJokeTextAndGiphy(request, jokeId){
+    try{
+        let url=`${api_url}jokes/${jokeId}`
+
+        const response = await fetch(url, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(request)
+        })
+        const data = await response.text()
+        console.log(data)
+    }catch(err){
+        console.log({message: err.message})
+    }
+}
+
+let samplePatchJokeText ={
+    "jokeText": "This it!"
+}
+let samplePatchJokeEmoji ={
+    "jokeEmoji": "This is the text that goes instead of link "
+}
+
+// updateJokeTextAndGiphy(samplePatchJokeText, 1)
+// updateJokeTextAndGiphy(samplePatchJokeEmoji, 1)
+
+
+
+//Add emoji 1-2-3 to joke
+
+
+
+async function updateJokeReactions(emojiN, jokeId){
+    try{
+
+        //Determine which emoji reaction will be added to post, then send request
+        const patchReaction1 = {
+            "jokeReactions": {
+            "emoji1": 1
+            }
+        }
+        const patchReaction2 = {
+            "jokeReactions": {
+            "emoji2": 1
+            }
+        }
+        const patchReaction3 = {
+            "jokeReactions": {
+            "emoji3": 1
+            }
+        }
+
+        let request
+
+        //Do switch statement instead
+        if(emojiN == 1){
+            request = patchReaction1
+        }
+        else if(emojiN == 2){
+            request = patchReaction2
+        }
+        else if(emojiN == 3){
+            request = patchReaction3
+        }else{
+            throw new Error('This emoji does not exist')
+        }
+
+        let url=`${api_url}jokes/${jokeId}`
+
+        const response = await fetch(url, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(request)
+        })
+        const data = await response.text()
+        console.log(data)
+
+    }catch(err){
+        console.log({message: err.message})
+    }
+}
+
+// updateJokeReactions(3, 1)
+
+
+
+
+
+
+
+
+//Update comment text
+//Where do I insert comment id?
+async function updateCommentText(request, jokeId){
+    try{
+        let url=`${api_url}jokes/${jokeId}/comments`
+
+        const response = await fetch(url, {
+            method: 'PATCH',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(request)
+        })
+        const data = await response.text()
+        console.log(data)
+
+    }catch(err){
+        console.log({message: err.message})
+    }
+}
+
+let samplePatchCommentText = {
+    "commentID": 1,
+    "commentText": "Test comment 2"
+}
+
+// updateCommentText(samplePatchCommentText, 1)
+
+
+//Add emoji 1-2-3 to comment
+async function updateCommentReaction(emojiN, jokeId, commentID){
+
+    //Determine request to send
+    let request
+    //Do switch statement instead
+    if(emojiN == 1){
+        request = {
+            "commentID": commentID,
+            "commentReactions": {
+              "emoji1": 1
+            }
+        }
+    }
+    else if(emojiN == 2){
+        request = request = {
+            "commentID": commentID,
+            "commentReactions": {
+              "emoji2": 1
+            }
+        }
+    }
+    else if(emojiN == 3){
+        request = request = {
+            "commentID": commentID,
+            "commentReactions": {
+              "emoji3": 1
+            }
+        }
+    }else{
+        throw new Error('This emoji does not exist')
+    }
+
+    let url=`${api_url}jokes/${jokeId}/comments`
+
+    const response = await fetch(url, {
+        method: 'PATCH',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(request)
+    })
+    const data = await response.text()
+    console.log(data)
+
+}
+
+
+// updateCommentReaction(1,1,1)
+
+
+
+
+module.exports = {getAllJokes, getJokesById, getJokeComments, postJoke, postComment, deleteJoke, deleteComment, updateJokeTextAndGiphy, updateJokeReactions, updateCommentText, updateCommentReaction}
+
+},{}],3:[function(require,module,exports){
+const {makeMainSection, makeCommentSection} = require('./completeIndex')
+const fetchFunctions = require('./fetch_functions')
+
+
+
+
+
+
+
+const appendToSection = document.querySelector('#mainSection')
+
+let setupBTN = document.getElementById("setupBtn")
+let modalBg = document.querySelector(".popup-setup-bg")
+let modalClose = document.querySelector(".modal-close")
+
+// let postSetUpBtn = document.querySelector('postSetUpBtn')
+
+//Used in popup gif 
+let modalBgGif = document.querySelector(".popup-gif-bg")
+let modalCloseGif = document.querySelector(".modalCloseGif")
+
+let maxNumChara = 100
+
+
+///////////////////////////////////////////////////////////////
+//POPUP SETUP (Main comment)  
+///////////////////////////////////////////////////////////////
+
+function updateCounter(e) {
+    // console.log ("issues here: a")
+    const postBox = document.getElementById ("userComment");
+    let numCharacters = postBox.value.length
+    const characterCounter = document.getElementById('charcounter');
+    characterCounter.textContent=`Characters remaining: ${maxNumChara- numCharacters}`
+}
+
+
+setupBTN.addEventListener('click',function(){
+    console.log('setup btn clicked') 
+    modalBg.classList.add('bg-active');
+    document.addEventListener('keydown', updateCounter)
+});
+
+
+modalClose.addEventListener('click',function(){
+    console.log('close setup been clicked') 
+    modalBg.classList.remove('bg-active');
+});
+///////////////////////////////////////////////////////////////
+//END POPUP SETUP (Main comment)  
+///////////////////////////////////////////////////////////////
+
+
+///////////////////////////////////////////////////////////////
+//POPUP PUNCHLINE
+///////////////////////////////////////////////////////////////   
+let modalCloseX = document.querySelector(".modal-close-punchline")
+
+
+//Outside main
+modalCloseX.addEventListener('click',function(){
+    console.log('close punchline been clicked') 
+    modalBg.classList.remove('bg-active');
+});
+
+
+
+//Outside main
+function updateCounterPunchline(e) {
+    // console.log ("issues here: b")
+   const postBox = document.getElementById ("userCommentPunchlines");
+   let numCharacters = postBox.value.length
+   const characterCounter = document.getElementById('charcounterPunchLine');
+   characterCounter.textContent=`Characters remaining: ${maxNumChara- numCharacters}`
+}
+
+document.addEventListener('keydown', updateCounterPunchline) //starts the character counter func
+
+///////////////////////////////////////////////////////////////
+//END POPUP PUNCHLINE
+///////////////////////////////////////////////////////////////  
+
+
+///////////////////////////////////////////////////////////////
+//POPUP GIF
+///////////////////////////////////////////////////////////////
+
+modalCloseGif.addEventListener('click',function(){
+    console.log('close gif popup been clicked') 
+    modalBgGif.classList.remove('bg-active');
+});
+
+
+
+
+
+///////////////////////////////////////////////////////////////
+//API GIF
+///////////////////////////////////////////////////////////////
+const apikey = "2EIRww430F9ESfgx9QMKbvuEG2QxXsle"
+
+let searchBtn = document.getElementById('btn-search')
+
+//document.addEventListener("content", init);
+  
+searchBtn.addEventListener("click", e => {
+    e.preventDefault();
+    let path = `http://api.giphy.com/v1/gifs/search?api_key=${apikey}&limit=5&q=`;
+    let str = document.getElementById("search").value.trim();
+    path += str;
+    console.log("path", path)
+
+
+    fetch(path)
+        .then(response => response.json())
+        .then(content =>{
+            console.log(content)
+    
+   let resultsHtml = ''
+    
+    content.data.forEach(function (obj){
+    let url = obj.images.fixed_width.url
+    const width = obj.images.fixed_width.width
+    const height = obj.images.fixed_height.height
+    resultsHtml += `<img src="${url}" 
+                     width="${width}" 
+                    height="${height}"/>`
+    
+     document.getElementById("img-output").innerHTML = resultsHtml;
+    })
+    })
+        .catch(error => {
+        console.log("error")})
+    })
+///////////////////////////////////////////////////////////////
+//END API GIF
+///////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////
+////////    INTERACTIVE PART 
+//////////////////////////////////////////////////////////
+
+
+
+fetchFunctions.getAllJokes().then(data=>{
+    console.log('this is the data from arrow ' + data[0].jokeText)
+    for (const element of data) {
+        const {id, jokeText, jokeEmoji, comments, jokeReactions} = element
+        console.log(id, jokeText, jokeEmoji, comments, jokeReactions)
+
+
+
+        // Create main element and get all references
+        [divCard, commentsDiv, jokeId] = makeMainSection(id, jokeText, jokeEmoji.emoji1, jokeEmoji.emoji2, jokeEmoji.emoji3, comments.length)
+
+        //Append divCard to main container
+        appendToSection.appendChild(divCard)
+
+
+
+
+
+        // Create comments 
+    }
+})
+
+
+
+// [data.id, data.jokeText, data.jokeEmoji, data.comments.length, data.jokeReactions]
+
+},{"./completeIndex":1,"./fetch_functions":2}]},{},[3]);
