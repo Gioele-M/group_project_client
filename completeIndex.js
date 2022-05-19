@@ -1,88 +1,46 @@
+let setupBTN = document.getElementById("setupBtn")
+let modalBg = document.querySelector(".popup-setup-bg")
+let modalClose = document.querySelector(".modal-close")
+
+let postSetUpBtn = document.querySelector('postSetUpBtn')
 
 
-
-/*
-Main card sample
-
-section .main-section #mainSection {
-    div .card #cardSection{
-
-        div .card-body #cardBodySection{       !!!>>>>>>>Append comments to this
-
-
-            p .card-text #cardText  >>>>Main joke text 
-
-            section .emoji-bar{
-                a .card-link #emojiBarLolMain >>> 🤣 +++++ eventListener{
-                    span .emoji-counter-main #emojiLolMain >>> n of clicks
-                }
-                a .card-link #emojiBerMehMain >>> 😐 +++++ eventListener{
-                    span .emoji-counter-main #emojiMehMain >>> n of clicks
-                }
-                a .card-link #emojiBarTomMain >>> 🍅 +++++ eventListener{
-                    span .emoji-counter-main #emojiTomMain >>> n of clicks
-                }
-            }
-            div{
-                a .card-link #commentLink >>> text Read all ${} comments +++++ eventListener
-            }
-
-        div .buttonContainer{
-                button .punchline-btn #punchlineBtn >>> text 'add punch line' +++++ eventListener
-                button .gif-btn #gifBtn >>> text 'add gif' +++++ eventListener
-            }
-
-        div .startComments{####### Comments are appended here
-                comments!!
-        }
-            
-        }
-
-        
+///////////////////////////////////////////////////////////////
+//POPUP SETUP (Main comment)  
+///////////////////////////////////////////////////////////////
+setupBTN.addEventListener('click',function(){
+    console.log('setup btn clicked') 
+    modalBg.classList.add('bg-active');
+    document.addEventListener('keydown', updateCounter)
+});
 
 
-    }
-
-    br
-}
-
-
-Comment structure sample
-
-div .punchline-section #punchlineSection{
-    h6 >>>> text 'User comment:'
-    div .userCommentContainer{
-        p .userComment #userCommentText >>>>> punchline text
-        section .emoji-bar{
-            a .card-link #emojiBarLolComment >>> 🤣{
-                span .emoji-counter #emojiLolComment >>> n of click +++++ eventListener
-            }
-            a .card-link #emojiBarMehComment >>> 😐{
-                span .emoji-counter #emojiMehComment >>> n of click +++++ eventListener
-            }
-            a .card-link #emojiBarTomComment >>> 🍅{
-                span .emoji-counter #emojiTomComment >>> n of click +++++ eventListener
-            }
-
-        }
-
-    }
-}
-
-
-
-ALSO NEED TO LINK THE OTHER BUTTONS IN THE PAGE (add setup, gifs into clickable elements to choose which one to publish)
+modalClose.addEventListener('click',function(){
+    console.log('close setup been clicked') 
+    modalBg.classList.remove('bg-active');
+});
+///////////////////////////////////////////////////////////////
+//END POPUP SETUP (Main comment)  
+///////////////////////////////////////////////////////////////
 
 
 
 
 
-*/
 
 
-//These require eventlisteners!!!
 
 
+
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////
+//MAKE MAIN SECTION 
+///////////////////////////////////////////////////////////////
 function makeMainSection(jokeHead, nLol, nMeh, nTom, nComments){
 
     //Make card div
@@ -174,6 +132,21 @@ function makeMainSection(jokeHead, nLol, nMeh, nTom, nComments){
     openCommentsLinkA.id = 'commentLink'
 
     /////////////////////////////////Event listener
+    openCommentsLinkA.addEventListener('click',function(e){ 
+        e.preventDefault()
+        console.log('read comments clicked')
+
+        const commentSection = document.getElementById('punchlineSection')
+    
+        if (punchlinesOpen ===false) {
+        punchlinesOpen=true    
+        commentSection.classList.add("DisplayOn")
+        loadEmmojiBar()
+        }
+    })
+    
+
+
     //////////////////////
     openCommentsLinkA.textContent = `Read all ${nComments} comments`
     ///////////////////////
@@ -201,16 +174,6 @@ function makeMainSection(jokeHead, nLol, nMeh, nTom, nComments){
     ////////////////////event listener
 
 
-
-    //Make div for comments
-    let commentsDiv = document.createElement('div') //!!!>>>>>>>Append comments 
-    commentsDiv.className = 'punchline-section'
-
-    ///////////////////////////////////Return object
-
-
-
-
     // Wrap elements!
 
     //Wrap spans into a 
@@ -234,32 +197,26 @@ function makeMainSection(jokeHead, nLol, nMeh, nTom, nComments){
 
     //Put buttons inside buttonsdiv
 
-    buttonsDiv.appendChild(punchlineBtn)
-    buttonsDiv.appendChild(giphyBtn)
-
+    buttonsDiv.appendChild(emojiBarSection)
+    buttonsDiv.appendChild(openCommentsLinkDiv)
 
     // Append p - emojibar and comment link to cardbodysection
-    divCardBody.appendChild(mainParagraph)    
-    divCardBody.appendChild(emojiBarSection)
-    divCardBody.appendChild(openCommentsLinkDiv)
+    divCardBody.appendChild(mainParagraph)
 
 
 
-
-
-
-
-
-    // Append cardbody and buttons div and start comments cardsectiton 
+    // Append cardbody to cardsectiton
     divCard.appendChild(divCardBody)
     divCard.appendChild(buttonsDiv)
-    divCard.appendChild(commentsDiv)
 
 
-    return [divCard, commentsDiv]
+    return [divCard, divCardBody]
 
 }
 
+///////////////////////////////////////////////////////////////
+// MAKE MAIN SECTION
+///////////////////////////////////////////////////////////////
 
 
 
@@ -267,6 +224,12 @@ function makeMainSection(jokeHead, nLol, nMeh, nTom, nComments){
 
 
 
+
+
+
+///////////////////////////////////////////////////////////////
+// MAKE COMMENT SECTION
+///////////////////////////////////////////////////////////////
 
 
 function makeCommentSection(lineText, nLol, nMeh, nTom){
@@ -370,6 +333,32 @@ function makeCommentSection(lineText, nLol, nMeh, nTom){
 
     return sectionDiv
 }
+
+///////////////////////////////////////////////////////////////
+// MAKE COMMENT SECTION
+///////////////////////////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

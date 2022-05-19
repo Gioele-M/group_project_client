@@ -40,40 +40,52 @@
 						>
 					</div>
 				</div>
+
+
+
+                <div class="buttonContainer">    
+                    <!-- BTN MODAL POPUP -->
+                    <button class="punchline-btn" id="punchlineBtn">
+                        add punch line
+                    </button>
+                    <!-- BTN MODAL gif -->
+                    <button class="gif-btn" id="gifBtn">add gif</button>
+                </div>     
 				<!-- ............................... -->
+
+
+
+
+
+                <div class="startComments punchline-section">
 				<!-- read comment section -->
-				<div class="punchline-section" id="punchlineSection">
-					<h6>User comment:</h6>
+                    <div class="punchline-section" id="punchlineSection">
+                        <h6>User comment:</h6>
 
-					<div class="userCommentContainer">
-						<p class="userComment" id="userCommentText">
-							Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto
-							quos eaque nesciunt possimus deleniti, et voluptate facere
-							voluptates placeat exce
-						</p>
-						<section class="emoji-bar">
-							<a href="#" class="card-link" id="emojiBarLolComment"
-								>🤣 <span class="emoji-counter" id="emojiLolComment">15</span></a
-							>
-							<a href="#" class="card-link" id="emojiBarMehComment"
-								>😐<span class="emoji-counter" id="emojiMehComment">16</span></a
-							>
-							<a href="#" class="card-link" id="emojiBarTomComment"
-								>🍅<span class="emoji-counter" id="emojiTomComment">48</span></a
-							>
-						</section>
-					</div>
-
+                        <div class="userCommentContainer">
+                            <p class="userComment" id="userCommentText">
+                                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Iusto
+                                quos eaque nesciunt possimus deleniti, et voluptate facere
+                                voluptates placeat exce
+                            </p>
+                            <section class="emoji-bar">
+                                <a href="#" class="card-link" id="emojiBarLolComment"
+                                    >🤣 <span class="emoji-counter" id="emojiLolComment">15</span></a
+                                >
+                                <a href="#" class="card-link" id="emojiBarMehComment"
+                                    >😐<span class="emoji-counter" id="emojiMehComment">16</span></a
+                                >
+                                <a href="#" class="card-link" id="emojiBarTomComment"
+                                    >🍅<span class="emoji-counter" id="emojiTomComment">48</span></a
+                                >
+                            </section>
+                        </div>
+                    </div>
 					
 				</div>
 
-                <!-- BTN MODAL POPUP -->
-            <button class="punchline-btn" id="punchlineBtn">
-                add punch line
-            </button>
-            <!-- BTN MODAL gif -->
-            <button class="gif-btn" id="gifBtn">add gif</button>
-                
+<!-- DIV HERE TOO -->
+                       
 
 			</div>
 
@@ -162,7 +174,7 @@
                  <input id="user-name" type="text" />
                  <label for="user-comment">Setup</label>
                  <textarea id="userComment" maxlength="100" placeholder="Start typing"></textarea>
-                 <button class="post">Post</button>
+                 <button class="post" id="postSetUpBtn">Post</button>
                  <span class="modal-close">X</span>
                  <p  id="charcounter"></p>
              </form>
