@@ -252,7 +252,106 @@ function makeMainSection(jokeHead, nLol, nMeh, nTom, nComments){
 
 
 
-function makeCommentSection(lineText, nLol, nMeh, nTom)
+function makeCommentSection(lineText, nLol, nMeh, nTom){
+    //Make div for punchline section
+    const sectionDiv = document.createElement('div')
+    sectionDiv.className = 'punchline-section'
+    sectionDiv.id = 'punchlineSection'
+
+    //Make h6
+    const h6 = document.createElement('h6')
+    h6.textContent = 'User comment:'
+
+    //User comment container
+    const divCommentContainer = document.createElement('div')
+    divCommentContainer.className = 'userCommentContainer'
+
+    //User comment paragraph
+    const userCommentParagraph = document.createElement('p')
+    userCommentParagraph.className = 'userComment'
+    userCommentParagraph.id = 'userCommentText'
+
+    //////////////
+    userCommentParagraph.textContent = lineText
+    ///////////////
+
+    //Emoji bar section
+    const emojiBarSectionComment = document.createElement('section')
+    emojiBarSectionComment.className = 'emoji-bar'
+
+
+    //All emojis A and spans
+    //Lol
+    const emojiLolCommentA = document.createElement('a')
+    emojiLolCommentA.className = 'card-link'
+    emojiLolCommentA.id = 'emojiBarLolComment'
+    emojiLolCommentA.textContent = '🤣'
+
+    //////////////////////Event listener
+
+    const emojiLolCommentSpan = document.createElement('span')
+    emojiLolCommentSpan.className = 'emoji-counter'
+    emojiLolCommentSpan.id = 'emojiLolComment'
+    ////////
+    emojiLolCommentSpan.textContent = nLol
+    ////////
+
+
+    //Meh 
+    const emojiMehCommentA = document.createElement('a')
+    emojiMehCommentA.className = 'card-link'
+    emojiMehCommentA.id = 'emojiBarMehComment'
+    emojiMehCommentA.textContent = '😐'
+
+    //////////////////////Event listener
+
+    const emojiMehCommentSpan = document.createElement('span')
+    emojiMehCommentSpan.className = 'emoji-counter'
+    emojiMehCommentSpan.id = 'emojiMehComment'
+    ////////
+    emojiMehCommentSpan.textContent = nMeh
+    ////////
+
+
+
+    //Tom
+    const emojiTomCommentA = document.createElement('a')
+    emojiTomCommentA.className = 'card-link'
+    emojiTomCommentA.id = 'emojiBarTomComment'
+    emojiTomCommentA.textContent = '🍅'
+
+    //////////////////////Event listener
+
+    const emojiTomCommentSpan = document.createElement('span')
+    emojiTomCommentSpan.className = 'emoji-counter'
+    emojiTomCommentSpan.id = 'emojiTomComment'
+    ////////
+    emojiTomCommentSpan.textContent = nTom
+    ////////
+
+
+    //Nest elements
+    //Nest all spans into as
+    emojiLolCommentA.appendChild(emojiLolCommentSpan)
+    emojiMehCommentA.appendChild(emojiMehCommentSpan)
+    emojiTomCommentA.appendChild(emojiTomCommentSpan)
+
+    //Append As into emojibar section
+    emojiBarSectionComment.appendChild(emojiLolCommentA)
+    emojiBarSectionComment.appendChild(emojiMehCommentA)
+    emojiBarSectionComment.appendChild(emojiTomCommentA)
+    
+
+    //Append p and emojibar section into div container
+    divCommentContainer.appendChild(mainParagraph)
+    divCommentContainer.appendChild(emojiBarSectionComment)
+
+    //Append h6 and div to main section div
+    sectionDiv.appendChild(h6)
+    sectionDiv.appendChild(divCommentContainer)
+
+    return sectionDiv
+}
 
 
 
