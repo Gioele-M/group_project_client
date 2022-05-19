@@ -95,37 +95,66 @@ openComments.addEventListener('click',function(e){
     // emoji counter example when read comments is clicked
     function loadEmmojiBar () {
 
-    const lolCounter = document.getElementById("emojiBarLolComment");    // TWO ID EQUAL FOR THESE IN HTML -------- NEEDS CHANGE
+   // TWO ID EQUAL FOR THESE IN HTML -------- NEEDS CHANGE
     let emojiLolMain = document.getElementById("emojiLolMain");
-    const lolTally = 3 ///will be from the api
-    lolCounter.textContent = `🤣${lolTally}`;
-    lolnum=0
-    lolCounter.addEventListener('click',function(){
+    let emojiLolClickArea = document.getElementById("emojiBarLolComment");
+    let emojiLolComment = document.getElementById("emojiLolComment");
+    // const lolTally = 3 ///will be from the api
+    lolNum=0
+    emojiLolClickArea.addEventListener('click',function(){
         console.log('lol emoji clicked') 
-        lolnum +++ 1
-        emojiLolMain.textContent=  `${lolnum}` 
+        lolNum +++ 1
+        emojiLolMain.textContent=  `${lolNum}` 
+        emojiLolComment.textContent=  `${lolNum}`
     });
 
-    const mehCounter = document.getElementById("emojiBarMehComment");
-    const mehTally = 3 ///will be from the api
-    mehCounter.textContent = `😐${mehTally}`
-    mehnum=0
-    mehCounter.addEventListener('click',function(){
+    let emojiMehMain = document.getElementById("emojiMehMain");
+    let emojiMehClickArea = document.getElementById("emojiBarMehComment");
+    let emojiMehComment = document.getElementById("emojiMehComment");
+    // const lolTally = 3 ///will be from the api
+    mehNum=0
+    emojiMehClickArea.addEventListener('click',function(){
         console.log('meh emoji clicked') 
-        mehnum +++ 1
-        emojiMehMain.textContent=  `${mehnum}` 
+        mehNum +++ 1
+        emojiMehMain.textContent=  `${mehNum}` 
+        emojiMehComment.textContent=  `${mehNum}`
     });
 
-    let tomCounter = document.getElementById("emojiBarTomComment");
-    
-    let tomTally = "3333333333333" ///will be from the api
-    tomCounter.textContent = `🍅${tomTally}`
-    tomnum=0
-    tomCounter.addEventListener('click',function(){
-        console.log('tomato emoji clicked') 
-        tomnum +++ 1
-        emojiTomMain.textContent=  `${tomnum}`
+
+
+    // const mehCounter = document.getElementById("emojiBarMehComment");
+    // const mehTally = 3 ///will be from the api
+    // mehCounter.textContent = `😐${mehTally}`
+    // mehnum=0
+    // mehCounter.addEventListener('click',function(){
+    //     console.log('meh emoji clicked') 
+    //     mehnum +++ 1
+    //     emojiMehMain.textContent=  `${mehnum}` 
+    // });
+
+    let emojiTomMain = document.getElementById("emojiTomMain");
+    let emojiTomClickArea = document.getElementById("emojiBarTomComment");
+    let emojiTomComment = document.getElementById("emojiTomComment");
+    // const lolTally = 3 ///will be from the api
+    tomNum=0
+    emojiTomClickArea.addEventListener('click',function(){
+        console.log('tom emoji clicked') 
+        tomNum +++ 1
+        emojiTomMain.textContent=  `${tomNum}` 
+        emojiTomComment.textContent=  `${tomNum}`
     });
+
+
+
+    // let tomCounter = document.getElementById("emojiBarTomComment");
+    // let tomTally = "3333333333333" ///will be from the api
+    // tomCounter.textContent = `🍅${tomTally}`
+    // tomnum=0
+    // tomCounter.addEventListener('click',function(){
+    //     console.log('tomato emoji clicked') 
+    //     tomnum +++ 1
+    //     emojiTomMain.textContent=  `${tomnum}`
+    // });
 }
 ///////////////////////////////////////////////////////////////
 //POPUP PUNCHLINE
