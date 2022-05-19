@@ -145,6 +145,19 @@
 ///////////////////////////////////////////////////////////////
 
 
+let modalBg = document.querySelector(".popup-setup-bg")
+
+
+let modalBgPunchline = document.querySelector('.popup-punchline-bg')
+
+// let postSetUpBtn = document.querySelector('postSetUpBtn')
+
+//Used in popup gif 
+let modalBgGif = document.querySelector(".popup-gif-bg")
+
+
+
+
 function makeMainSection(jokeId, jokeHead, nLol, nMeh, nTom, nComments){
 
     //Make card div
@@ -170,7 +183,8 @@ function makeMainSection(jokeId, jokeHead, nLol, nMeh, nTom, nComments){
     
     //make emojibar section
     const emojiBarSection = document.createElement('section')
-    emojiBarSection.className = 'emoji-bar'
+    emojiBarSection.classList.add(['emoji-bar','btnColor'])
+
 
     //Make A link and spans for each emoji
 
@@ -244,7 +258,7 @@ function makeMainSection(jokeId, jokeHead, nLol, nMeh, nTom, nComments){
 
     //Make div for comments
     let commentsDiv = document.createElement('div') //!!!>>>>>>>Append comments 
-    commentsDiv.className = 'punchline-section'
+    commentsDiv.classList.add('punchline-section')
     ///////////////////////////////////Return object
 
 
@@ -266,9 +280,12 @@ function makeMainSection(jokeId, jokeHead, nLol, nMeh, nTom, nComments){
         if (punchlinesOpen ===false) {
             punchlinesOpen=true    
             commentsDiv.classList.add("DisplayOn")
-        }else {
+            
+        }
+        else {
             punchlinesOpen=false
             commentsDiv.classList.remove("DisplayOn")
+
         }
         }
     )
@@ -293,7 +310,7 @@ function makeMainSection(jokeId, jokeHead, nLol, nMeh, nTom, nComments){
     ////////////////////////////////////// Event listener
     punchlineBtn.addEventListener('click',function(){
         console.log('add punchline clicked') 
-        modalBg.classList.add('bg-active');
+        modalBgPunchline.classList.add('bg-active');
     });
 
     let giphyBtn = document.createElement('button') // -> event listener
@@ -383,7 +400,7 @@ function makeMainSection(jokeId, jokeHead, nLol, nMeh, nTom, nComments){
 function makeCommentSection(jokeId, lineText, nLol, nMeh, nTom){
     //Make div for punchline section
     const sectionDiv = document.createElement('div')
-    sectionDiv.className = 'punchline-section'
+    // sectionDiv.className = 'punchline-section'
     sectionDiv.id = 'punchlineSection'
 
     //Make h6
@@ -405,7 +422,7 @@ function makeCommentSection(jokeId, lineText, nLol, nMeh, nTom){
 
     //Emoji bar section
     const emojiBarSectionComment = document.createElement('section')
-    emojiBarSectionComment.className = 'emoji-bar'
+    emojiBarSectionComment.classList.add(['emoji-bar','btnColor'])
 
 
     //All emojis A and spans
@@ -528,85 +545,5 @@ module.exports = {makeMainSection, makeCommentSection}
 
 
 
-// const trybtn = document.querySelector('#setupBtn')
-// const appendToSection = document.querySelector('#mainSection')
 
 
-
-// const sampleText = 'why did the chicken cross the road'
-
-
-// //Add comment to existing bit 
-// const addCommentBtn = document.querySelector('#punchlineBtn')
-// const appendCommentsHere = document.querySelector('#cardBodySection')
-
-// addCommentBtn.addEventListener('click', (e)=>{
-//     appendCommentsHere.appendChild(makeCommentSection(sampleText, 1, 1,1))
-
-// })
-
-
-
-
-
-
-// trybtn.addEventListener('click', (e)=>{
-
-//     let [mainJoke, commentSection] = makeMainSection(sampleText, 1, 1, 1, 1)
-
-//     appendToSection.appendChild(mainJoke)
-
-//     //per comment in comments
-
-//     commentSection.appendChild(makeCommentSection(sampleText, 1, 1, 1))
-
-// })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-////////////////////////////////
-// const api_url ='https://dream-team-server.herokuapp.com/'
-
-// import fetch from 'node-fetch'
-
-
-// //They all return promises though
-
-
-// //Get functions
-
-// //Get all jokes
-// async function getAllJokes(){
-//     try{
-//         let url=`${api_url}jokes/`
-//         const response = await fetch(url)
-//         const data = await response.json()
-//         console.log(data)
-//         for (const comment of data) {
-//             appendToSection.append(makeMainSection(sampleText, 1, 1, 1, 1))
-            
-//         }
-//         return data
-//     }catch(err){
-//         console.log({message: err.message})
-//     }
-// }
-
-// getAllJokes()

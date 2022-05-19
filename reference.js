@@ -13,13 +13,22 @@ let setupBTN = document.getElementById("setupBtn")
 let modalBg = document.querySelector(".popup-setup-bg")
 let modalClose = document.querySelector(".modal-close")
 
-// let postSetUpBtn = document.querySelector('postSetUpBtn')
+let modalBgPunchline = document.querySelector('.popup-punchline-bg')
 
 //Used in popup gif 
 let modalBgGif = document.querySelector(".popup-gif-bg")
 let modalCloseGif = document.querySelector(".modalCloseGif")
 
-let maxNumChara = 100
+const postPunchlineBtn = document.querySelector('#postPunchlineBtn')
+
+let maxNumChara = 150
+
+
+
+
+
+//Punch line text declaration
+const punchLineText = document.getElementById ("userCommentPunchlines")
 
 
 ///////////////////////////////////////////////////////////////
@@ -28,8 +37,7 @@ let maxNumChara = 100
 
 function updateCounter(e) {
     // console.log ("issues here: a")
-    const postBox = document.getElementById ("userComment");
-    let numCharacters = postBox.value.length
+    let numCharacters = setUpText.value.length
     const characterCounter = document.getElementById('charcounter');
     characterCounter.textContent=`Characters remaining: ${maxNumChara- numCharacters}`
 }
@@ -60,7 +68,8 @@ let modalCloseX = document.querySelector(".modal-close-punchline")
 //Outside main
 modalCloseX.addEventListener('click',function(){
     console.log('close punchline been clicked') 
-    modalBg.classList.remove('bg-active');
+    modalBgPunchline.classList.remove('bg-active');
+    
 });
 
 
@@ -68,8 +77,7 @@ modalCloseX.addEventListener('click',function(){
 //Outside main
 function updateCounterPunchline(e) {
     // console.log ("issues here: b")
-   const postBox = document.getElementById ("userCommentPunchlines");
-   let numCharacters = postBox.value.length
+   let numCharacters = punchLineText.value.length
    const characterCounter = document.getElementById('charcounterPunchLine');
    characterCounter.textContent=`Characters remaining: ${maxNumChara- numCharacters}`
 }
@@ -102,7 +110,6 @@ const apikey = "2EIRww430F9ESfgx9QMKbvuEG2QxXsle"
 let searchBtn = document.getElementById('btn-search')
 
 //document.addEventListener("content", init);
-  
 searchBtn.addEventListener("click", e => {
     e.preventDefault();
     let path = `http://api.giphy.com/v1/gifs/search?api_key=${apikey}&limit=5&q=`;
@@ -153,8 +160,7 @@ searchBtn.addEventListener("click", e => {
 ////////    INTERACTIVE PART 
 //////////////////////////////////////////////////////////
 
-
-
+//Load page and create elements
 fetchFunctions.getAllJokes().then(data=>{
     console.log('this is the data from arrow ' + data[0].jokeText)
     for (const element of data) {
@@ -164,18 +170,101 @@ fetchFunctions.getAllJokes().then(data=>{
 
 
         // Create main element and get all references
-        [divCard, commentsDiv, jokeId] = makeMainSection(id, jokeText, jokeEmoji.emoji1, jokeEmoji.emoji2, jokeEmoji.emoji3, comments.length)
+        const [divCard, commentsDiv, jokeId] = makeMainSection(id, jokeText, jokeReactions.emoji1, jokeReactions.emoji2, jokeReactions.emoji3, comments.length)
 
         //Append divCard to main container
         appendToSection.appendChild(divCard)
 
+        
+        for(const comment of comments){
 
+            const [jokeIdforComment, sectionDiv] = makeCommentSection(jokeId, comment.commentText, comment.commentReactions.emoji1, comment.commentReactions.emoji2, comment.commentReactions.emoji3)
 
+            commentsDiv.appendChild(sectionDiv)
 
+        }
+
+        //[jokeId, sectionDiv]
 
         // Create comments 
     }
 })
+
+
+
+
+
+
+
+// Post joke Send info 
+
+
+//Used to publish setup
+const postSetUpBtn = document.querySelector('#postSetUpBtn')
+const setUpText = document.getElementById ("userComment")
+
+//Event listener for publishing setup
+postSetUpBtn.addEventListener('click', ()=>{
+    let samplePostJoke = {
+        "jokeText": setUpText.value,
+        "jokeEmoji": "#",
+        "jokeReactions": {
+            "emoji1": 0,
+            "emoji2": 0,
+            "emoji3": 0 
+        },
+        "comments": [
+            {
+                "commentID": 1, 
+                "commentText": "This is a sample comment too!",
+                "commentReactions":{
+                    "emoji1": 0, 
+                    "emoji2": 0,
+                    "emoji3": 0 
+                }
+            }
+        ]
+    }
+    
+    //Get data from setup text and send to server
+    let response = fetchFunctions.postJoke(samplePostJoke)
+
+    response.then(e=>{
+        console.log(e)
+    })
+
+})
+
+
+
+
+
+postPunchlineBtn.addEventListener('click', (e)=>{
+    console.log('punchline was posted')
+    // Get data from punchLineText and send to server
+    // punchLineText
+    const samplePostComment= {
+        "commentID": 3,
+        "commentText": "Test comment",
+        "commentReactions": {
+          "emoji1": 0,
+          "emoji2": 0,
+          "emoji3": 0
+        }
+    }
+
+    console.log(e)
+
+})
+
+
+
+
+
+
+
+
+
 
 
 

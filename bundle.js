@@ -146,6 +146,19 @@
 ///////////////////////////////////////////////////////////////
 
 
+let modalBg = document.querySelector(".popup-setup-bg")
+
+
+let modalBgPunchline = document.querySelector('.popup-punchline-bg')
+
+// let postSetUpBtn = document.querySelector('postSetUpBtn')
+
+//Used in popup gif 
+let modalBgGif = document.querySelector(".popup-gif-bg")
+
+
+
+
 function makeMainSection(jokeId, jokeHead, nLol, nMeh, nTom, nComments){
 
     //Make card div
@@ -171,7 +184,8 @@ function makeMainSection(jokeId, jokeHead, nLol, nMeh, nTom, nComments){
     
     //make emojibar section
     const emojiBarSection = document.createElement('section')
-    emojiBarSection.className = 'emoji-bar'
+    emojiBarSection.classList.add(['emoji-bar','btnColor'])
+
 
     //Make A link and spans for each emoji
 
@@ -245,7 +259,7 @@ function makeMainSection(jokeId, jokeHead, nLol, nMeh, nTom, nComments){
 
     //Make div for comments
     let commentsDiv = document.createElement('div') //!!!>>>>>>>Append comments 
-    commentsDiv.className = 'punchline-section'
+    commentsDiv.classList.add('punchline-section')
     ///////////////////////////////////Return object
 
 
@@ -267,9 +281,12 @@ function makeMainSection(jokeId, jokeHead, nLol, nMeh, nTom, nComments){
         if (punchlinesOpen ===false) {
             punchlinesOpen=true    
             commentsDiv.classList.add("DisplayOn")
-        }else {
+            
+        }
+        else {
             punchlinesOpen=false
             commentsDiv.classList.remove("DisplayOn")
+
         }
         }
     )
@@ -294,7 +311,7 @@ function makeMainSection(jokeId, jokeHead, nLol, nMeh, nTom, nComments){
     ////////////////////////////////////// Event listener
     punchlineBtn.addEventListener('click',function(){
         console.log('add punchline clicked') 
-        modalBg.classList.add('bg-active');
+        modalBgPunchline.classList.add('bg-active');
     });
 
     let giphyBtn = document.createElement('button') // -> event listener
@@ -384,7 +401,7 @@ function makeMainSection(jokeId, jokeHead, nLol, nMeh, nTom, nComments){
 function makeCommentSection(jokeId, lineText, nLol, nMeh, nTom){
     //Make div for punchline section
     const sectionDiv = document.createElement('div')
-    sectionDiv.className = 'punchline-section'
+    // sectionDiv.className = 'punchline-section'
     sectionDiv.id = 'punchlineSection'
 
     //Make h6
@@ -406,7 +423,7 @@ function makeCommentSection(jokeId, lineText, nLol, nMeh, nTom){
 
     //Emoji bar section
     const emojiBarSectionComment = document.createElement('section')
-    emojiBarSectionComment.className = 'emoji-bar'
+    emojiBarSectionComment.classList.add(['emoji-bar','btnColor'])
 
 
     //All emojis A and spans
@@ -529,88 +546,8 @@ module.exports = {makeMainSection, makeCommentSection}
 
 
 
-// const trybtn = document.querySelector('#setupBtn')
-// const appendToSection = document.querySelector('#mainSection')
 
 
-
-// const sampleText = 'why did the chicken cross the road'
-
-
-// //Add comment to existing bit 
-// const addCommentBtn = document.querySelector('#punchlineBtn')
-// const appendCommentsHere = document.querySelector('#cardBodySection')
-
-// addCommentBtn.addEventListener('click', (e)=>{
-//     appendCommentsHere.appendChild(makeCommentSection(sampleText, 1, 1,1))
-
-// })
-
-
-
-
-
-
-// trybtn.addEventListener('click', (e)=>{
-
-//     let [mainJoke, commentSection] = makeMainSection(sampleText, 1, 1, 1, 1)
-
-//     appendToSection.appendChild(mainJoke)
-
-//     //per comment in comments
-
-//     commentSection.appendChild(makeCommentSection(sampleText, 1, 1, 1))
-
-// })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-////////////////////////////////
-// const api_url ='https://dream-team-server.herokuapp.com/'
-
-// import fetch from 'node-fetch'
-
-
-// //They all return promises though
-
-
-// //Get functions
-
-// //Get all jokes
-// async function getAllJokes(){
-//     try{
-//         let url=`${api_url}jokes/`
-//         const response = await fetch(url)
-//         const data = await response.json()
-//         console.log(data)
-//         for (const comment of data) {
-//             appendToSection.append(makeMainSection(sampleText, 1, 1, 1, 1))
-            
-//         }
-//         return data
-//     }catch(err){
-//         console.log({message: err.message})
-//     }
-// }
-
-// getAllJokes()
 
 },{}],2:[function(require,module,exports){
 const api_url ='https://dream-team-server.herokuapp.com/'
@@ -1009,13 +946,22 @@ let setupBTN = document.getElementById("setupBtn")
 let modalBg = document.querySelector(".popup-setup-bg")
 let modalClose = document.querySelector(".modal-close")
 
-// let postSetUpBtn = document.querySelector('postSetUpBtn')
+let modalBgPunchline = document.querySelector('.popup-punchline-bg')
 
 //Used in popup gif 
 let modalBgGif = document.querySelector(".popup-gif-bg")
 let modalCloseGif = document.querySelector(".modalCloseGif")
 
-let maxNumChara = 100
+const postPunchlineBtn = document.querySelector('#postPunchlineBtn')
+
+let maxNumChara = 150
+
+
+
+
+
+//Punch line text declaration
+const punchLineText = document.getElementById ("userCommentPunchlines")
 
 
 ///////////////////////////////////////////////////////////////
@@ -1024,8 +970,7 @@ let maxNumChara = 100
 
 function updateCounter(e) {
     // console.log ("issues here: a")
-    const postBox = document.getElementById ("userComment");
-    let numCharacters = postBox.value.length
+    let numCharacters = setUpText.value.length
     const characterCounter = document.getElementById('charcounter');
     characterCounter.textContent=`Characters remaining: ${maxNumChara- numCharacters}`
 }
@@ -1056,7 +1001,8 @@ let modalCloseX = document.querySelector(".modal-close-punchline")
 //Outside main
 modalCloseX.addEventListener('click',function(){
     console.log('close punchline been clicked') 
-    modalBg.classList.remove('bg-active');
+    modalBgPunchline.classList.remove('bg-active');
+    
 });
 
 
@@ -1064,8 +1010,7 @@ modalCloseX.addEventListener('click',function(){
 //Outside main
 function updateCounterPunchline(e) {
     // console.log ("issues here: b")
-   const postBox = document.getElementById ("userCommentPunchlines");
-   let numCharacters = postBox.value.length
+   let numCharacters = punchLineText.value.length
    const characterCounter = document.getElementById('charcounterPunchLine');
    characterCounter.textContent=`Characters remaining: ${maxNumChara- numCharacters}`
 }
@@ -1098,7 +1043,6 @@ const apikey = "2EIRww430F9ESfgx9QMKbvuEG2QxXsle"
 let searchBtn = document.getElementById('btn-search')
 
 //document.addEventListener("content", init);
-  
 searchBtn.addEventListener("click", e => {
     e.preventDefault();
     let path = `http://api.giphy.com/v1/gifs/search?api_key=${apikey}&limit=5&q=`;
@@ -1149,8 +1093,7 @@ searchBtn.addEventListener("click", e => {
 ////////    INTERACTIVE PART 
 //////////////////////////////////////////////////////////
 
-
-
+//Load page and create elements
 fetchFunctions.getAllJokes().then(data=>{
     console.log('this is the data from arrow ' + data[0].jokeText)
     for (const element of data) {
@@ -1160,18 +1103,101 @@ fetchFunctions.getAllJokes().then(data=>{
 
 
         // Create main element and get all references
-        [divCard, commentsDiv, jokeId] = makeMainSection(id, jokeText, jokeEmoji.emoji1, jokeEmoji.emoji2, jokeEmoji.emoji3, comments.length)
+        const [divCard, commentsDiv, jokeId] = makeMainSection(id, jokeText, jokeReactions.emoji1, jokeReactions.emoji2, jokeReactions.emoji3, comments.length)
 
         //Append divCard to main container
         appendToSection.appendChild(divCard)
 
+        
+        for(const comment of comments){
 
+            const [jokeIdforComment, sectionDiv] = makeCommentSection(jokeId, comment.commentText, comment.commentReactions.emoji1, comment.commentReactions.emoji2, comment.commentReactions.emoji3)
 
+            commentsDiv.appendChild(sectionDiv)
 
+        }
+
+        //[jokeId, sectionDiv]
 
         // Create comments 
     }
 })
+
+
+
+
+
+
+
+// Post joke Send info 
+
+
+//Used to publish setup
+const postSetUpBtn = document.querySelector('#postSetUpBtn')
+const setUpText = document.getElementById ("userComment")
+
+//Event listener for publishing setup
+postSetUpBtn.addEventListener('click', ()=>{
+    let samplePostJoke = {
+        "jokeText": setUpText.value,
+        "jokeEmoji": "#",
+        "jokeReactions": {
+            "emoji1": 0,
+            "emoji2": 0,
+            "emoji3": 0 
+        },
+        "comments": [
+            {
+                "commentID": 1, 
+                "commentText": "This is a sample comment too!",
+                "commentReactions":{
+                    "emoji1": 0, 
+                    "emoji2": 0,
+                    "emoji3": 0 
+                }
+            }
+        ]
+    }
+    
+    //Get data from setup text and send to server
+    let response = fetchFunctions.postJoke(samplePostJoke)
+
+    response.then(e=>{
+        console.log(e)
+    })
+
+})
+
+
+
+
+
+postPunchlineBtn.addEventListener('click', (e)=>{
+    console.log('punchline was posted')
+    // Get data from punchLineText and send to server
+    // punchLineText
+    const samplePostComment= {
+        "commentID": 3,
+        "commentText": "Test comment",
+        "commentReactions": {
+          "emoji1": 0,
+          "emoji2": 0,
+          "emoji3": 0
+        }
+    }
+
+    console.log(e)
+
+})
+
+
+
+
+
+
+
+
+
 
 
 
