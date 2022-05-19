@@ -27,27 +27,27 @@ html, body{
 .card-body{
 	display: flex;
 	justify-content: center;
-	align-items: center;
+	align-items: flex-end;
 	height: 100%;
 	width: 100%;
-	
-	
-}
-
-#commentLink{   /*12 comments*/
-	 align-self: flex-start;
+	flex-direction: column;
 	
 }
 
+#cardText{
+	align-self:center;
+}
 
 
 .card-text{
 	text-align: center;
+	font-weight: bold;
+	font-size: 1.5em;
 }
 
 
 .card-link { /*emojis*/
-	margin: 5px;
+	margin: 10px;
    
 }
 
@@ -58,15 +58,51 @@ html, body{
 	
 }
 
+.btnColor{
+	
+  background-color: #f1f1f1;
+  color: black;
+  font-size: 16px;
+  padding: 8px 15px;
+  border: none;
+  cursor: pointer;
+  border-radius: 10px;
+  text-align: center;
+  margin:1%;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.5)
+	
+}
+.btnColor:hover{
+	background-color: black;
+    color: white;
+	
+}
+
+
+
 .emoji-bar {
-	margin: 3%;
+	
 	max-width: fit-content;
+	margin-left: auto;
+	
+	/*margin: 1%;
 	background-color: rgb(245, 242, 242);
 	border: 1px solid black;
 	border-radius: 20px;
-	padding: 0.5em;
+	padding: 0.5em;*/
+	
 	/* margin: auto; */
 }
+
+.userCommentContainer {
+	padding: 0.5em;
+}
+
+.userComment {
+	/*padding-left: 20px;*/
+	text-align: center;
+}
+
 
 
 .grid-container {
