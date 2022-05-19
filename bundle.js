@@ -304,7 +304,8 @@ function makeMainSection(jokeId, jokeHead, nLol, nMeh, nTom, nComments){
     //Make buttons for punchline and giphys
 
     let punchlineBtn = document.createElement('button') /// -> event listener
-    punchlineBtn.className = 'punchline-btn'
+
+    punchlineBtn.classList.add(['punchline-btn', 'btnColor'])
     punchlineBtn.id = 'punchlineBtn'
     punchlineBtn.textContent = 'add punch line'
 
@@ -315,7 +316,7 @@ function makeMainSection(jokeId, jokeHead, nLol, nMeh, nTom, nComments){
     });
 
     let giphyBtn = document.createElement('button') // -> event listener
-    giphyBtn.className = 'gif-btn'
+    giphyBtn.classList.add(['gif-btn', 'btnColor'])
     giphyBtn.id = 'gifBtn'
     giphyBtn.textContent = 'add giphy'
 
@@ -974,11 +975,7 @@ function updateCounter(e) {
 }
 
 
-setupBTN.addEventListener('click',function(){
-    console.log('setup btn clicked') 
-    modalBg.classList.add('bg-active');
-    document.addEventListener('keydown', updateCounter)
-});
+
 
 
 modalClose.addEventListener('click',function(){
@@ -1168,7 +1165,11 @@ postSetUpBtn.addEventListener('click', ()=>{
 
 
 
-
+setupBTN.addEventListener('click',function(){
+    console.log('setup btn clicked') 
+    modalBg.classList.add('bg-active');
+    document.addEventListener('keydown', updateCounter)
+});
 
 postPunchlineBtn.addEventListener('click', (e)=>{
     console.log('punchline was posted')
@@ -1189,7 +1190,9 @@ postPunchlineBtn.addEventListener('click', (e)=>{
 })
 
 
+//Need to work around this
 
+// Eventlistener local storage(?)
 
 
 
