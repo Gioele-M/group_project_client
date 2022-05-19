@@ -23,7 +23,7 @@
 					</p>
 					<!-- <h6 class="card-subtitle mb-2 text-muted" id="mainCommentUserName">by Tom</h6> -->
 					<!-- <a href="#" class="card-link" id="emojiBar">🤣😐🍅</a> -->
-					<section class="emoji-bar">
+					<section class="emoji-bar btnColor">
 						<a href="#" class="card-link" id="emojiBarLolMain"
 							>🤣 <span class="emoji-counter-main" id="emojiLolMain">15</span></a
 						>
@@ -36,7 +36,7 @@
 					</section>
 					<div>
 						<a href="#" class="card-link" id="commentLink"
-							>Read all 12 comments</a
+							>Read comments</a
 						>
 					</div>
 				</div>
@@ -51,7 +51,7 @@
 							quos eaque nesciunt possimus deleniti, et voluptate facere
 							voluptates placeat exce
 						</p>
-						<section class="emoji-bar">
+						<section class="emoji-bar btnColor">
 							<a href="#" class="card-link" id="emojiBarLolComment"
 								>🤣 <span class="emoji-counter" id="emojiLolComment">15</span></a
 							>
@@ -68,14 +68,16 @@
 				</div>
 
                 <!-- BTN MODAL POPUP -->
-            <button class="punchline-btn" id="punchlineBtn">
+		<div class="buttonContainer">
+
+            <button class="punchline-btn btnColor" id="punchlineBtn">
                 add punch line
             </button>
             <!-- BTN MODAL gif -->
-            <button class="gif-btn" id="gifBtn">add gif</button>
-                
+            <button class="gif-btn btnColor" id="gifBtn">add gif</button>
+		
+		</div>
 
-			</div>
 
             
 
@@ -197,27 +199,24 @@
 
              <span class="modalCloseGif">X</span>
              <div id="for-gifs">
-                <form>
+                <form id="gif-form"> <!-- new ID added to make form bigger to hold gifs-->
                     <label for="search">Search</label>
                     <input id="search" type ="search" placeholder="search" />
                     <button id="btn-search" type="submit">go</button>
                 </form>
             </div>
             
-            <div id="img-output"> <!-- GIF images go here-->
-            </div>  
-<!-- ///////////////////////toms flexbox for gifs -->
-             <section id="gifContainer">
-                <div class="gif-flex-container">
-                    <div>gif 1</div>
-                    <div>gif 2</div>
-                    <div>gif 3</div>  
-                    <div>gif 4</div>  
-                    <div>gif 5</div>  
-                  </div>
-             </section>
+            	<div id="img-output">  <!-- GIF images go here-->
+							<div id="gif-1"></div>
+							<div id="gif-2"></div>
+							<div id="gif-3"></div>  
+							<div id="gif-4"></div>  
+							<div id="gif-5"></div>
+				</div>
+            
+			</div>  
 
-         </form>
+       
         </div>
   </div>  
 
