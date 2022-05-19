@@ -1,50 +1,55 @@
-/////////i delete require yargs, it was breaking the code
-// const { string } = require("yargs");
+///////////////////////////////////////////////////////////////
+// INDEX
+///////////////////////////////////////////////////////////////
+//-counting letters
+//-popup setup
+//-read comments and display comment section
+//-emojibar (commentedout?)
+//-popup punchline
+//-popup gif
+//-search gif
+//-api gif
+///////////////////////////////////////////////////////////////
+// END INDEX
+///////////////////////////////////////////////////////////////
 
-///this func is for testing with jest
-// function scripts (){
-//     console.log("I am JS")
-// }
 
 
 
-//////////////////////////// COUNTING LETTERS // only working for add setp
-const maxNumChara = 100;
-document.getElementById("userComment").setAttribute("maxlength", maxNumChara);
-document.getElementById("userCommentPunchlines").setAttribute("maxlength", maxNumChara);
 
-
-document.addEventListener('keydown', updateCounter)
-//add an if to check if the popbox is on?
+///////////////////////////////////////////////////////////////
+// COUNTING LETTERS 
+///////////////////////////////////////////////////////////////
+const maxNumChara = 100; //will update the index.html chara limit & used in counter display
+document.getElementById("userComment").setAttribute("maxlength", maxNumChara); //update html chara limit
+document.getElementById("userCommentPunchlines").setAttribute("maxlength", maxNumChara);//update html chara limit
 
 function updateCounter(e) {
+    // console.log ("issues here: a")
     const postBox = document.getElementById ("userComment");
-    console.log('key has been pressed in form box')
     let numCharacters = postBox.value.length
-    console.log("num of characters:",numCharacters)
-
-    // update text counter
     const characterCounter = document.getElementById('charcounter');
     characterCounter.textContent=`Characters remaining: ${maxNumChara- numCharacters}`
 }
 
 function updateCounterPunchline(e) {
+     // console.log ("issues here: b")
     const postBox = document.getElementById ("userCommentPunchlines");
-    console.log('key has been pressed in form box')
     let numCharacters = postBox.value.length
-    console.log("num of characters:",numCharacters)
-
-    // update text counter
     const characterCounter = document.getElementById('charcounterPunchLine');
     characterCounter.textContent=`Characters remaining: ${maxNumChara- numCharacters}`
 }
-////////////////////////////END  COUNTING LETTERS
+///////////////////////////////////////////////////////////////
+// END  COUNTING LETTERS
+///////////////////////////////////////////////////////////////
 
 
 
 
-//////////////////////////////////
-//turns on the SETUP modal 
+
+///////////////////////////////////////////////////////////////
+//POPUP SETUP (Main comment)  
+///////////////////////////////////////////////////////////////
 let setupBTN = document.getElementById("setupBtn")
 let modalBg = document.querySelector(".popup-setup-bg")
 let modalClose = document.querySelector(".modal-close")
@@ -52,28 +57,27 @@ let modalClose = document.querySelector(".modal-close")
 setupBTN.addEventListener('click',function(){
     console.log('setup btn clicked') 
     modalBg.classList.add('bg-active');
-  
+    document.addEventListener('keydown', updateCounter)
 });
 
 modalClose.addEventListener('click',function(){
     console.log('close setup been clicked') 
     modalBg.classList.remove('bg-active');
 });
-////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+//END POPUP SETUP (Main comment)  
+///////////////////////////////////////////////////////////////
 
 
 
 
 
-    
-
-//CLICK READ comments and display comment section
-
-// THIS HAS TO BE FIXED
-
-////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+//READ COMMENTS AND DISPLAY COMMENT SECTION(THIS HAS TO BE FIXED)
+///////////////////////////////////////////////////////////////
 const openComments = document.getElementById('commentLink')
 let punchlinesOpen = false 
+
 openComments.addEventListener('click',function(e){ 
     e.preventDefault()
     console.log('read comments clicked')
@@ -83,66 +87,85 @@ openComments.addEventListener('click',function(e){
     punchlinesOpen=true    
     commentSection.classList.add("DisplayOn")
     loadEmmojiBar()
-   
+
+  //ASK GIO ABOUT THE FOLLOWING 
+//   make an event listener for each of those that targets
+//  the id emojiBarLolMain and injects text in the id emojiLolMain
     //////
     // emoji counter example when read comments is clicked
     function loadEmmojiBar () {
 
-    // const lolCounter = document.getElementById("emoji-bar-lol");    // TWO ID EQUAL FOR THESE IN HTML -------- NEEDS CHANGE
-    // const lolTally = 3 ///will be from the api
-    // lolCounter.textContent = `🤣${lolTally}`
+    const lolCounter = document.getElementById("emojiBarLolComment");    // TWO ID EQUAL FOR THESE IN HTML -------- NEEDS CHANGE
+    let emojiLolMain = document.getElementById("emojiLolMain");
+    const lolTally = 3 ///will be from the api
+    lolCounter.textContent = `🤣${lolTally}`;
+    lolnum=0
+    lolCounter.addEventListener('click',function(){
+        console.log('lol emoji clicked') 
+        lolnum +++ 1
+        emojiLolMain.textContent=  `${lolnum}` 
+    });
 
-    // const mehCounter = document.getElementById("emoji-bar-meh");
-    // const mehTally = 3 ///will be from the api
-    // mehCounter.textContent = `😐${mehTally}`
+    const mehCounter = document.getElementById("emojiBarMehComment");
+    const mehTally = 3 ///will be from the api
+    mehCounter.textContent = `😐${mehTally}`
+    mehnum=0
+    mehCounter.addEventListener('click',function(){
+        console.log('meh emoji clicked') 
+        mehnum +++ 1
+        emojiMehMain.textContent=  `${mehnum}` 
+    });
 
-    // let tomCounter = document.getElementById("emoji-bar-tom");
-    // let tomTally = "3333333333333" ///will be from the api
-    // tomCounter.textContent = `🍅${tomTally}`
-
+    let tomCounter = document.getElementById("emojiBarTomComment");
+    
+    let tomTally = "3333333333333" ///will be from the api
+    tomCounter.textContent = `🍅${tomTally}`
+    tomnum=0
+    tomCounter.addEventListener('click',function(){
+        console.log('tomato emoji clicked') 
+        tomnum +++ 1
+        emojiTomMain.textContent=  `${tomnum}`
+    });
 }
-    //turns on the punchline modal 
+///////////////////////////////////////////////////////////////
+//POPUP PUNCHLINE
+///////////////////////////////////////////////////////////////   
     let punchlineBTN = document.getElementById("punchlineBtn")
     let modalBg = document.querySelector(".popup-punchline-bg")
     let modalCloseX = document.querySelector(".modal-close-punchline")
-
 
     punchlineBTN.addEventListener('click',function(){
         console.log('add punchline clicked') 
         modalBg.classList.add('bg-active');
     });
-    
-        document.addEventListener('keydown', updateCounterPunchline)
-
+        document.addEventListener('keydown', updateCounterPunchline) //starts the character counter func
         modalCloseX.addEventListener('click',function(){
         console.log('close punchline been clicked') 
         modalBg.classList.remove('bg-active');
     });
-
-    ///////////////
 }
 else {
     punchlinesOpen=false
     commentSection.classList.remove("DisplayOn")
 }
+///////////////////////////////////////////////////////////////
+//END POPUP PUNCHLINE
+///////////////////////////////////////////////////////////////  
 
 
 
-    //turns on the gif add modal 
+
+///////////////////////////////////////////////////////////////
+//POPUP GIF
+///////////////////////////////////////////////////////////////
     let gifBTN = document.getElementById("gifBtn")
     let modalBgGif = document.querySelector(".popup-gif-bg")
     let modalCloseGif = document.querySelector(".modalCloseGif")
-
 
     gifBTN.addEventListener('click',function(){
         console.log('add gif clicked') 
     
         modalBgGif.classList.add('bg-active');
-
-
-//     });
-    
-        // document.addEventListener('keydown', updateCounterPunchline)
 
         modalCloseGif.addEventListener('click',function(){
         console.log('close gif popup been clicked') 
@@ -152,7 +175,9 @@ else {
 
 
 
-//////////////gif search image popup
+///////////////////////////////////////////////////////////////
+//SEARCH GIF
+///////////////////////////////////////////////////////////////
     const gifSearchBTN = document.getElementById("gifSearchBTN")
     const gifImageBox = document.getElementById("gifContainer")
 
@@ -161,29 +186,26 @@ else {
         gifImageBox.classList.add('bg-active');
         gifImageBox.style.visibility=false
  })
-
-
-//     ///////////////
-// }
-// else {
-//     punchlinesOpen=false
-//     commentSection.classList.remove("DisplayOn")
-// }
-
-
-
-
-
-
-
-
-
+///////////////////////////////////////////////////////////////
+//END SEARCH GIF
+///////////////////////////////////////////////////////////////
 })
+///////////////////////////////////////////////////////////////
+//END POPUP GIF
+///////////////////////////////////////////////////////////////
 })
+///////////////////////////////////////////////////////////////
+//END READ COMMENTS AND DISPLAY COMMENT SECTION(THIS HAS TO BE FIXED)
+///////////////////////////////////////////////////////////////
 
 
 
-////////////////gif
+
+
+
+///////////////////////////////////////////////////////////////
+//API GIF
+///////////////////////////////////////////////////////////////
 const apikey = "2EIRww430F9ESfgx9QMKbvuEG2QxXsle"
 
 let searchBtn = document.getElementById('btn-search')
@@ -214,23 +236,11 @@ searchBtn.addEventListener("click", e => {
                     height="${height}"/>`
     
      document.getElementById("img-output").innerHTML = resultsHtml;
-    
     })
-       
     })
         .catch(error => {
         console.log("error")})
-    
-    
     })
-
-
-
-
-
-
-
-
-
-
-// module.exports= scripts
+///////////////////////////////////////////////////////////////
+//END API GIF
+///////////////////////////////////////////////////////////////
