@@ -63,6 +63,7 @@ html, body{
   background-color: #f1f1f1;
   color: black;
   font-size: 16px;
+  transition: font-size 0.5s;
   padding: 8px 15px;
   border: none;
   cursor: pointer;
@@ -75,6 +76,8 @@ html, body{
 .btnColor:hover{
 	background-color: black;
     color: white;
+	font-size: 16px; /* added font size , padding */
+    padding: 10px 20px;
 	
 }
 
@@ -194,8 +197,8 @@ html, body{
 .modal {
 	position: relative;
 	background-color: white;
-	width: 30%;
-	height: 30%;
+	width: fit-content;
+	height: fit-content;
 }
 form {
 	display: flex;
@@ -236,12 +239,12 @@ h2 {
 
 
 
-  .gif-flex-container > div {
+ /* .gif-flex-container > div{
     background-color: #f1f1f1;
     margin: 5px;
     padding: 20px;
     font-size: 70px;
-  }
+  } */
 
 
 
@@ -251,3 +254,15 @@ h2 {
 	padding: 10px;
 	border-radius: 50%;
 }
+
+
+#img-output{
+	display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: 200px 200px;
+    grid-gap: 3px;
+	border: 5px soild black;
+	margin: 0.5em;
+	max-width: fit-content;
+}
+

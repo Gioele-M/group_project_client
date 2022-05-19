@@ -27,7 +27,7 @@ searchBtn.addEventListener("click", e => {
     resultsHtml += `<img src="${url}" 
                      width="${width}" 
                     height="${height}"/>`
-    
+     
      document.getElementById("img-output").innerHTML = resultsHtml;
     
     })
@@ -38,5 +38,7 @@ searchBtn.addEventListener("click", e => {
     
     
     })
+
+
 
 
