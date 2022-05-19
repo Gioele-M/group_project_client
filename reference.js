@@ -43,11 +43,7 @@ function updateCounter(e) {
 }
 
 
-setupBTN.addEventListener('click',function(){
-    console.log('setup btn clicked') 
-    modalBg.classList.add('bg-active');
-    document.addEventListener('keydown', updateCounter)
-});
+
 
 
 modalClose.addEventListener('click',function(){
@@ -237,7 +233,11 @@ postSetUpBtn.addEventListener('click', ()=>{
 
 
 
-
+setupBTN.addEventListener('click',function(){
+    console.log('setup btn clicked') 
+    modalBg.classList.add('bg-active');
+    document.addEventListener('keydown', updateCounter)
+});
 
 postPunchlineBtn.addEventListener('click', (e)=>{
     console.log('punchline was posted')
