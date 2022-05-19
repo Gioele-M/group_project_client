@@ -5,7 +5,6 @@
 Main card sample
 
 section .main-section #mainSection {
-    br
     div .card #cardSection{
 
         div .card-body #cardBodySection{       !!!>>>>>>>Append comments to this
@@ -84,12 +83,6 @@ ALSO NEED TO LINK THE OTHER BUTTONS IN THE PAGE (add setup, gifs into clickable 
 
 
 function makeMainSection(jokeHead, nLol, nMeh, nTom, nComments){
-    //Make main section
-    const mainSec = document.createElement('section')
-    mainSec.className = 'main-section'
-    mainSec.id = 'mainSection'
-
-    //{
 
     //Make card div
     const divCard = document.createElement('div')
@@ -235,11 +228,8 @@ function makeMainSection(jokeHead, nLol, nMeh, nTom, nComments){
     // Append cardbody to cardsectiton
     divCard.appendChild(divCardBody)
 
-    //append cardsection to main section
-    mainSec.appendChild(divCard)
 
-
-    return [mainSec, divCardBody]
+    return [divCard, divCardBody]
 
 }
 
@@ -288,6 +278,7 @@ function makeCommentSection(lineText, nLol, nMeh, nTom){
     emojiLolCommentA.textContent = '🤣'
 
     //////////////////////Event listener
+
 
     const emojiLolCommentSpan = document.createElement('span')
     emojiLolCommentSpan.className = 'emoji-counter'
@@ -343,7 +334,7 @@ function makeCommentSection(lineText, nLol, nMeh, nTom){
     
 
     //Append p and emojibar section into div container
-    divCommentContainer.appendChild(mainParagraph)
+    divCommentContainer.appendChild(userCommentParagraph)
     divCommentContainer.appendChild(emojiBarSectionComment)
 
     //Append h6 and div to main section div
@@ -352,6 +343,43 @@ function makeCommentSection(lineText, nLol, nMeh, nTom){
 
     return sectionDiv
 }
+
+
+
+const trybtn = document.querySelector('#setupBtn')
+const appendToSection = document.querySelector('#mainSection')
+
+
+
+const sampleText = 'why did the chicken cross the road'
+
+
+//Add comment to existing bit 
+const addCommentBtn = document.querySelector('#punchlineBtn')
+const appendCommentsHere = document.querySelector('#cardBodySection')
+
+addCommentBtn.addEventListener('click', (e)=>{
+    appendCommentsHere.appendChild(makeCommentSection(sampleText, 1, 1,1))
+
+})
+
+
+
+
+
+
+trybtn.addEventListener('click', (e)=>{
+
+    let [mainJoke, commentSection] = makeMainSection(sampleText, 1, 1, 1, 1)
+
+    appendToSection.appendChild(mainJoke)
+
+    //per comment in comments
+
+    commentSection.appendChild(makeCommentSection(sampleText, 1, 1, 1))
+
+})
+
 
 
 
