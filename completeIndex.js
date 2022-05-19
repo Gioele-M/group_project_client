@@ -4,6 +4,10 @@ let modalClose = document.querySelector(".modal-close")
 
 let postSetUpBtn = document.querySelector('postSetUpBtn')
 
+//Used in popup gif 
+let modalBgGif = document.querySelector(".popup-gif-bg")
+let modalCloseGif = document.querySelector(".modalCloseGif")
+
 
 ///////////////////////////////////////////////////////////////
 //POPUP SETUP (Main comment)  
@@ -24,6 +28,92 @@ modalClose.addEventListener('click',function(){
 ///////////////////////////////////////////////////////////////
 
 
+///////////////////////////////////////////////////////////////
+//POPUP PUNCHLINE
+///////////////////////////////////////////////////////////////   
+let modalCloseX = document.querySelector(".modal-close-punchline")
+
+
+//Outside main
+modalCloseX.addEventListener('click',function(){
+    console.log('close punchline been clicked') 
+    modalBg.classList.remove('bg-active');
+});
+
+
+
+//Outside main
+function updateCounterPunchline(e) {
+    // console.log ("issues here: b")
+   const postBox = document.getElementById ("userCommentPunchlines");
+   let numCharacters = postBox.value.length
+   const characterCounter = document.getElementById('charcounterPunchLine');
+   characterCounter.textContent=`Characters remaining: ${maxNumChara- numCharacters}`
+}
+
+document.addEventListener('keydown', updateCounterPunchline) //starts the character counter func
+
+///////////////////////////////////////////////////////////////
+//END POPUP PUNCHLINE
+///////////////////////////////////////////////////////////////  
+
+
+///////////////////////////////////////////////////////////////
+//POPUP GIF
+///////////////////////////////////////////////////////////////
+
+modalCloseGif.addEventListener('click',function(){
+    console.log('close gif popup been clicked') 
+    modalBgGif.classList.remove('bg-active');
+});
+
+
+
+
+
+///////////////////////////////////////////////////////////////
+//API GIF
+///////////////////////////////////////////////////////////////
+const apikey = "2EIRww430F9ESfgx9QMKbvuEG2QxXsle"
+
+let searchBtn = document.getElementById('btn-search')
+
+//document.addEventListener("content", init);
+  
+searchBtn.addEventListener("click", e => {
+    e.preventDefault();
+    let path = `http://api.giphy.com/v1/gifs/search?api_key=${apikey}&limit=5&q=`;
+    let str = document.getElementById("search").value.trim();
+    path += str;
+    console.log("path", path)
+
+
+    fetch(path)
+        .then(response => response.json())
+        .then(content =>{
+            console.log(content)
+    
+   let resultsHtml = ''
+    
+    content.data.forEach(function (obj){
+    let url = obj.images.fixed_width.url
+    const width = obj.images.fixed_width.width
+    const height = obj.images.fixed_height.height
+    resultsHtml += `<img src="${url}" 
+                     width="${width}" 
+                    height="${height}"/>`
+    
+     document.getElementById("img-output").innerHTML = resultsHtml;
+    })
+    })
+        .catch(error => {
+        console.log("error")})
+    })
+///////////////////////////////////////////////////////////////
+//END API GIF
+///////////////////////////////////////////////////////////////
+
+
 
 
 
@@ -41,6 +131,8 @@ modalClose.addEventListener('click',function(){
 ///////////////////////////////////////////////////////////////
 //MAKE MAIN SECTION 
 ///////////////////////////////////////////////////////////////
+
+
 function makeMainSection(jokeHead, nLol, nMeh, nTom, nComments){
 
     //Make card div
@@ -48,14 +140,12 @@ function makeMainSection(jokeHead, nLol, nMeh, nTom, nComments){
     divCard.className = 'card'
     divCard.id = 'cardSection'
 
-    //{
 
     //Make card body div ------ Append comments to this!!!! Maybe return reference!!!
     const divCardBody = document.createElement('div')
     divCardBody.className = 'card-body'
     divCardBody.id = 'cardBodySection'
 
-    //{
     
     //Make main joke paragraph
     const mainParagraph = document.createElement('p') ////++++++ Main joke text injected here
@@ -79,6 +169,12 @@ function makeMainSection(jokeHead, nLol, nMeh, nTom, nComments){
     mainEmojiLolA.textContent = '🤣'
 
     /////////////////////////////////////////////////// Event listener
+    mainEmojiLolA.addEventListener('click', function(){
+        console.log('Lol emoji clicked') 
+        /////////////////////////////////////////////// Send patch to backend
+    })
+
+
 
     const mainEmojiLolSpan = document.createElement('span') // +++++ Inject number of clicks
     mainEmojiLolSpan.className = 'emoji-counter-main'
@@ -96,6 +192,10 @@ function makeMainSection(jokeHead, nLol, nMeh, nTom, nComments){
     mainEmojiMehA.textContent = '😐'
 
     ///////////////////////////// Event listener
+    mainEmojiMehA.addEventListener('click', function(){
+        console.log('Meh emoji clicked') 
+        /////////////////////////////////////////////// Send patch to backend
+    })
 
     const mainEmojiMehSpan = document.createElement('span') //++++ inject number of clicks
     mainEmojiMehSpan.className = 'emoji-counter-main'
@@ -113,6 +213,11 @@ function makeMainSection(jokeHead, nLol, nMeh, nTom, nComments){
     mainEmojiTomA.textContent = '🍅'
 
     ////////////////////////////// Event listener
+    mainEmojiTomA.addEventListener('click', function(){
+        console.log('Tom emoji clicked') 
+        /////////////////////////////////////////////// Send patch to backend
+    })
+    
 
     const mainEmojiTomSpan = document.createElement('span')
     mainEmojiTomSpan.className = 'emoji-counter-main' 
@@ -123,8 +228,17 @@ function makeMainSection(jokeHead, nLol, nMeh, nTom, nComments){
     ////////////////////////
 
 
-    ///// Div for reading all comments +++++ event listener + inject text
 
+
+    //Make div for comments
+    let commentsDiv = document.createElement('div') //!!!>>>>>>>Append comments 
+    commentsDiv.className = 'punchline-section'
+    ///////////////////////////////////Return object
+
+
+
+
+    ///// Div for reading all comments +++++ event listener + inject text
     const openCommentsLinkDiv = document.createElement('div')
 
     const openCommentsLinkA = document.createElement('a') // +++ event listener + inject text
@@ -132,19 +246,22 @@ function makeMainSection(jokeHead, nLol, nMeh, nTom, nComments){
     openCommentsLinkA.id = 'commentLink'
 
     /////////////////////////////////Event listener
+    let punchlinesOpen = false 
     openCommentsLinkA.addEventListener('click',function(e){ 
         e.preventDefault()
         console.log('read comments clicked')
-
-        const commentSection = document.getElementById('punchlineSection')
-    
+        
         if (punchlinesOpen ===false) {
-        punchlinesOpen=true    
-        commentSection.classList.add("DisplayOn")
-        loadEmmojiBar()
+            punchlinesOpen=true    
+            commentsDiv.classList.add("DisplayOn")
+        }else {
+            punchlinesOpen=false
+            commentSection.classList.remove("DisplayOn")
         }
-    })
-    
+        }
+    )
+
+
 
 
     //////////////////////
@@ -165,6 +282,10 @@ function makeMainSection(jokeHead, nLol, nMeh, nTom, nComments){
     punchlineBtn.textContent = 'add punch line'
 
     ////////////////////////////////////// Event listener
+    punchlineBtn.addEventListener('click',function(){
+        console.log('add punchline clicked') 
+        modalBg.classList.add('bg-active');
+    });
 
     let giphyBtn = document.createElement('button') // -> event listener
     giphyBtn.className = 'gif-btn'
@@ -172,6 +293,20 @@ function makeMainSection(jokeHead, nLol, nMeh, nTom, nComments){
     giphyBtn.textContent = 'add giphy'
 
     ////////////////////event listener
+    giphyBtn.addEventListener('click',function(){
+        console.log('add gif clicked') 
+    
+        modalBgGif.classList.add('bg-active');
+    
+        
+
+    })
+    
+
+
+
+    
+
 
 
     // Wrap elements!
@@ -197,20 +332,47 @@ function makeMainSection(jokeHead, nLol, nMeh, nTom, nComments){
 
     //Put buttons inside buttonsdiv
 
-    buttonsDiv.appendChild(emojiBarSection)
-    buttonsDiv.appendChild(openCommentsLinkDiv)
+    buttonsDiv.appendChild(punchlineBtn)
+    buttonsDiv.appendChild(giphyBtn)
+
 
     // Append p - emojibar and comment link to cardbodysection
-    divCardBody.appendChild(mainParagraph)
+    divCardBody.appendChild(mainParagraph)    
+    divCardBody.appendChild(emojiBarSection)
+    divCardBody.appendChild(openCommentsLinkDiv)
 
-
-
-    // Append cardbody to cardsectiton
+    // Append cardbody and buttons div and start comments cardsectiton 
     divCard.appendChild(divCardBody)
     divCard.appendChild(buttonsDiv)
+    divCard.appendChild(commentsDiv)
 
 
-    return [divCard, divCardBody]
+
+
+
+    /////////////////////////////////////////
+    ////// EVENT LISTENERS
+    /////////////////////////////////////////
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    return [divCard, commentsDiv]
 
 }
 
@@ -268,6 +430,10 @@ function makeCommentSection(lineText, nLol, nMeh, nTom){
     emojiLolCommentA.textContent = '🤣'
 
     //////////////////////Event listener
+    emojiLolCommentA.addEventListener('click',function(){
+        console.log('lol emoji clicked')
+        //////////////////////////////////////////// Send patch to backend 
+    })
 
 
     const emojiLolCommentSpan = document.createElement('span')
@@ -285,6 +451,12 @@ function makeCommentSection(lineText, nLol, nMeh, nTom){
     emojiMehCommentA.textContent = '😐'
 
     //////////////////////Event listener
+    emojiMehCommentA.addEventListener('click', function(){
+        console.log('meh emoji clicked')
+        ////////////////////////////////////////// Send patch to backend
+    })
+    
+
 
     const emojiMehCommentSpan = document.createElement('span')
     emojiMehCommentSpan.className = 'emoji-counter'
@@ -330,6 +502,11 @@ function makeCommentSection(lineText, nLol, nMeh, nTom){
     //Append h6 and div to main section div
     sectionDiv.appendChild(h6)
     sectionDiv.appendChild(divCommentContainer)
+
+
+
+
+
 
     return sectionDiv
 }
