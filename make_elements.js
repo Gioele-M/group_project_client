@@ -5,7 +5,6 @@
 Main card sample
 
 section .main-section #mainSection {
-    br
     div .card #cardSection{
 
         div .card-body #cardBodySection{       !!!>>>>>>>Append comments to this
@@ -84,12 +83,6 @@ ALSO NEED TO LINK THE OTHER BUTTONS IN THE PAGE (add setup, gifs into clickable 
 
 
 function makeMainSection(jokeHead, nLol, nMeh, nTom, nComments){
-    //Make main section
-    const mainSec = document.createElement('section')
-    mainSec.className = 'main-section'
-    mainSec.id = 'mainSection'
-
-    //{
 
     //Make card div
     const divCard = document.createElement('div')
@@ -235,11 +228,8 @@ function makeMainSection(jokeHead, nLol, nMeh, nTom, nComments){
     // Append cardbody to cardsectiton
     divCard.appendChild(divCardBody)
 
-    //append cardsection to main section
-    mainSec.appendChild(divCard)
 
-
-    return [mainSec, divCardBody]
+    return [divCard, divCardBody]
 
 }
 
@@ -252,7 +242,144 @@ function makeMainSection(jokeHead, nLol, nMeh, nTom, nComments){
 
 
 
-function makeCommentSection(lineText, nLol, nMeh, nTom)
+function makeCommentSection(lineText, nLol, nMeh, nTom){
+    //Make div for punchline section
+    const sectionDiv = document.createElement('div')
+    sectionDiv.className = 'punchline-section'
+    sectionDiv.id = 'punchlineSection'
+
+    //Make h6
+    const h6 = document.createElement('h6')
+    h6.textContent = 'User comment:'
+
+    //User comment container
+    const divCommentContainer = document.createElement('div')
+    divCommentContainer.className = 'userCommentContainer'
+
+    //User comment paragraph
+    const userCommentParagraph = document.createElement('p')
+    userCommentParagraph.className = 'userComment'
+    userCommentParagraph.id = 'userCommentText'
+
+    //////////////
+    userCommentParagraph.textContent = lineText
+    ///////////////
+
+    //Emoji bar section
+    const emojiBarSectionComment = document.createElement('section')
+    emojiBarSectionComment.className = 'emoji-bar'
+
+
+    //All emojis A and spans
+    //Lol
+    const emojiLolCommentA = document.createElement('a')
+    emojiLolCommentA.className = 'card-link'
+    emojiLolCommentA.id = 'emojiBarLolComment'
+    emojiLolCommentA.textContent = '🤣'
+
+    //////////////////////Event listener
+
+
+    const emojiLolCommentSpan = document.createElement('span')
+    emojiLolCommentSpan.className = 'emoji-counter'
+    emojiLolCommentSpan.id = 'emojiLolComment'
+    ////////
+    emojiLolCommentSpan.textContent = nLol
+    ////////
+
+
+    //Meh 
+    const emojiMehCommentA = document.createElement('a')
+    emojiMehCommentA.className = 'card-link'
+    emojiMehCommentA.id = 'emojiBarMehComment'
+    emojiMehCommentA.textContent = '😐'
+
+    //////////////////////Event listener
+
+    const emojiMehCommentSpan = document.createElement('span')
+    emojiMehCommentSpan.className = 'emoji-counter'
+    emojiMehCommentSpan.id = 'emojiMehComment'
+    ////////
+    emojiMehCommentSpan.textContent = nMeh
+    ////////
+
+
+
+    //Tom
+    const emojiTomCommentA = document.createElement('a')
+    emojiTomCommentA.className = 'card-link'
+    emojiTomCommentA.id = 'emojiBarTomComment'
+    emojiTomCommentA.textContent = '🍅'
+
+    //////////////////////Event listener
+
+    const emojiTomCommentSpan = document.createElement('span')
+    emojiTomCommentSpan.className = 'emoji-counter'
+    emojiTomCommentSpan.id = 'emojiTomComment'
+    ////////
+    emojiTomCommentSpan.textContent = nTom
+    ////////
+
+
+    //Nest elements
+    //Nest all spans into as
+    emojiLolCommentA.appendChild(emojiLolCommentSpan)
+    emojiMehCommentA.appendChild(emojiMehCommentSpan)
+    emojiTomCommentA.appendChild(emojiTomCommentSpan)
+
+    //Append As into emojibar section
+    emojiBarSectionComment.appendChild(emojiLolCommentA)
+    emojiBarSectionComment.appendChild(emojiMehCommentA)
+    emojiBarSectionComment.appendChild(emojiTomCommentA)
+    
+
+    //Append p and emojibar section into div container
+    divCommentContainer.appendChild(userCommentParagraph)
+    divCommentContainer.appendChild(emojiBarSectionComment)
+
+    //Append h6 and div to main section div
+    sectionDiv.appendChild(h6)
+    sectionDiv.appendChild(divCommentContainer)
+
+    return sectionDiv
+}
+
+
+
+const trybtn = document.querySelector('#setupBtn')
+const appendToSection = document.querySelector('#mainSection')
+
+
+
+const sampleText = 'why did the chicken cross the road'
+
+
+//Add comment to existing bit 
+const addCommentBtn = document.querySelector('#punchlineBtn')
+const appendCommentsHere = document.querySelector('#cardBodySection')
+
+addCommentBtn.addEventListener('click', (e)=>{
+    appendCommentsHere.appendChild(makeCommentSection(sampleText, 1, 1,1))
+
+})
+
+
+
+
+
+
+trybtn.addEventListener('click', (e)=>{
+
+    let [mainJoke, commentSection] = makeMainSection(sampleText, 1, 1, 1, 1)
+
+    appendToSection.appendChild(mainJoke)
+
+    //per comment in comments
+
+    commentSection.appendChild(makeCommentSection(sampleText, 1, 1, 1))
+
+})
+
 
 
 
