@@ -37,7 +37,7 @@ section .main-section #mainSection {
 
 
         button .punchline-btn #punchlineBtn >>> text 'add punch line' +++++ eventListener
-        button .git-btn #gifBtn >>> text 'add gif' +++++ eventListener
+        button .gif-btn #gifBtn >>> text 'add gif' +++++ eventListener
 
 
 
@@ -91,10 +91,6 @@ function makeMainSection(jokeHead, nLol, nMeh, nTom, nComments){
 
     //{
 
-    //Make 2 br
-    const br1 = document.createElement('br')
-    const br2 = document.createElement('br')
-
     //Make card div
     const divCard = document.createElement('div')
     divCard.className = 'card'
@@ -109,18 +105,141 @@ function makeMainSection(jokeHead, nLol, nMeh, nTom, nComments){
 
     //{
     
+    //Make main joke paragraph
+    const mainParagraph = document.createElement('p') ////++++++ Main joke text injected here
+    mainParagraph.className = 'card-text'
+    mainParagraph.id = 'cardText'
     
+    /////////////////
+    mainParagraph.textContent = jokeHead
+    /////////////////
+    
+    //make emojibar section
+    const emojiBarSection = document.createElement('section')
+    emojiBarSection.className = 'emoji-bar'
+
+    //Make A link and spans for each emoji
+
+    //LOL
+    const mainEmojiLolA = document.createElement('a') //++++ event Listener!!
+    mainEmojiLolA.className = 'card-link'
+    mainEmojiLolA.id = 'emojiBarLolMain'
+    mainEmojiLolA.textContent = '🤣'
+
+    /////////////////////////////////////////////////// Event listener
+
+    const mainEmojiLolSpan = document.createElement('span') // +++++ Inject number of clicks
+    mainEmojiLolSpan.className = 'emoji-counter-main'
+    mainEmojiLolSpan.id = 'emojiLolMain'
+
+    /////////////////
+    mainEmojiLolSpan.textContent = nLol
+    /////////////////
+
+
+    //MEH
+    const mainEmojiMehA = document.createElement('a') // ++++ eventListener
+    mainEmojiMehA.className = 'card-link'
+    mainEmojiMehA.id = 'emojiBarMehMain'
+    mainEmojiMehA.textContent = '😐'
+
+    ///////////////////////////// Event listener
+
+    const mainEmojiMehSpan = document.createElement('span') //++++ inject number of clicks
+    mainEmojiMehSpan.className = 'emoji-counter-main'
+    mainEmojiMehSpan.id = 'emojiMehMain'
+
+    ///////////////////////
+    mainEmojiMehSpan.textContent = nMeh
+    ///////////////////////
+
+
+    //TOM
+    const mainEmojiTomA = document.createElement('a') //+++++ eventlistener
+    mainEmojiTomA.className = 'card-link'
+    mainEmojiTomA.id = 'emojiBarTomMain'
+    mainEmojiTomA.textContent = '🍅'
+
+    ////////////////////////////// Event listener
+
+    const mainEmojiTomSpan = document.createElement('span')
+    mainEmojiTomSpan.className = 'emoji-counter-main' 
+    mainEmojiTomSpan.id = 'emojiTomMain'
+
+    /////////////////////////
+    mainEmojiTomSpan.textContent = nTom
+    ////////////////////////
+
+
+    ///// Div for reading all comments +++++ event listener + inject text
+
+    const openCommentsLinkDiv = document.createElement('div')
+
+    const openCommentsLinkA = document.createElement('a') // +++ event listener + inject text
+    openCommentsLinkA.className = 'card-link'
+    openCommentsLinkA.id = 'commentLink'
+
+    /////////////////////////////////Event listener
+    //////////////////////
+    openCommentsLinkA.textContent = `Read all ${nComments} comments`
+    ///////////////////////
+
+
+    //Make buttons for punchline and giphys
+
+    let punchlineBtn = document.createElement('button') /// -> event listener
+    punchlineBtn.className = 'punchline-btn'
+    punchlineBtn.id = 'punchlineBtn'
+    punchlineBtn.textContent = 'add punch line'
+
+    ////////////////////////////////////// Event listener
+
+    let giphyBtn = document.createElement('button') // -> event listener
+    giphyBtn.className = 'gif-btn'
+    giphyBtn.id = 'gifBtn'
+    giphyBtn.textContent = 'add giphy'
+
+    ////////////////////event listener
 
 
 
 
 
+    // Wrap elements!
+
+    //Wrap spans into a 
+
+    mainEmojiLolA.appendChild(mainEmojiLolSpan)
+
+    mainEmojiMehA.appendChild(mainEmojiMehSpan)
+
+    mainEmojiTomA.appendChild(mainEmojiTomSpan)
 
 
+    //Append As into emojibar section
+    emojiBarSection.appendChild(mainEmojiLolA)
+    emojiBarSection.appendChild(mainEmojiMehA)
+    emojiBarSection.appendChild(mainEmojiTomA)
 
 
+    //Append comment section a into div
+    openCommentsLinkDiv.appendChild(openCommentsLinkA)
 
 
+    // Append p - emojibar and comment link to cardbodysection
+    divCardBody.appendChild(mainParagraph)
+    divCardBody.appendChild(emojiBarSection)
+    divCardBody.appendChild(openCommentsLinkDiv)
+
+
+    // Append cardbody to cardsectiton
+    divCard.appendChild(divCardBody)
+
+    //append cardsection to main section
+    mainSec.appendChild(divCard)
+
+
+    return [mainSec, divCardBody]
 
 }
 
