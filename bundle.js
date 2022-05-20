@@ -189,7 +189,7 @@ function makeMainSection(jokeId, jokeHead, nLol, nMeh, nTom, nComments){
     
     //make emojibar section
     const emojiBarSection = document.createElement('section')
-    emojiBarSection.classList.add(['emoji-bar','btnColor'])
+    emojiBarSection.classList.add(['emoji-bar', 'btnColor'])
 
 
     //Make A link and spans for each emoji
