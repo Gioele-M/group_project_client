@@ -190,19 +190,14 @@ aboutbtn.addEventListener('click',function(){
 
 //Load page and create elements
 fetchFunctions.getAllJokes().then(data=>{
-    console.log('this is the data from arrow ' + data[0].jokeText)
     for (const element of data) {
         const {id, jokeText, jokeEmoji, comments, jokeReactions} = element
-        console.log(id, jokeText, jokeEmoji, comments, jokeReactions)
-
-
 
         // Create main element and get all references
         const [divCard, commentsDiv, jokeId] = makeMainSection(id, jokeText, jokeReactions.emoji1, jokeReactions.emoji2, jokeReactions.emoji3, comments.length)
 
         //Append divCard to main container
         appendToSection.appendChild(divCard)
-
         
         for(const comment of comments){
 
@@ -211,10 +206,6 @@ fetchFunctions.getAllJokes().then(data=>{
             commentsDiv.appendChild(sectionDiv)
 
         }
-
-        //[jokeId, sectionDiv]
-
-        // Create comments 
     }
 })
 
@@ -242,15 +233,6 @@ postSetUpBtn.addEventListener('click', ()=>{
             "emoji3": 0 
         },
         "comments": [
-            {
-                "commentID": 1, 
-                "commentText": "This is a sample comment too!",
-                "commentReactions":{
-                    "emoji1": 0, 
-                    "emoji2": 0,
-                    "emoji3": 0 
-                }
-            }
         ]
     }
     
