@@ -143,6 +143,11 @@
 ///////////////////////////////////////////////////////////////
 //MAKE MAIN SECTION 
 ///////////////////////////////////////////////////////////////
+const fetchFunctions = require('./fetch_functions')
+
+
+
+
 
 
 let modalBg = document.querySelector(".popup-setup-bg")
@@ -183,7 +188,7 @@ function makeMainSection(jokeId, jokeHead, nLol, nMeh, nTom, nComments){
     
     //make emojibar section
     const emojiBarSection = document.createElement('section')
-    emojiBarSection.classList.add(['emoji-bar','btnColor'])
+    emojiBarSection.classList.add(['emoji-bar', 'btnColor'])
 
 
     //Make A link and spans for each emoji
@@ -197,6 +202,7 @@ function makeMainSection(jokeId, jokeHead, nLol, nMeh, nTom, nComments){
     /////////////////////////////////////////////////// Event listener
     mainEmojiLolA.addEventListener('click', function(){
         console.log('Lol emoji clicked') 
+        fetchFunctions.updateJokeReactions(1,jokeId)
         /////////////////////////////////////////////// Send patch to backend
     })
 
@@ -220,6 +226,7 @@ function makeMainSection(jokeId, jokeHead, nLol, nMeh, nTom, nComments){
     ///////////////////////////// Event listener
     mainEmojiMehA.addEventListener('click', function(){
         console.log('Meh emoji clicked') 
+        fetchFunctions.updateJokeReactions(2, jokeId)
         /////////////////////////////////////////////// Send patch to backend
     })
 
@@ -241,6 +248,7 @@ function makeMainSection(jokeId, jokeHead, nLol, nMeh, nTom, nComments){
     ////////////////////////////// Event listener
     mainEmojiTomA.addEventListener('click', function(){
         console.log('Tom emoji clicked') 
+        fetchFunctions.updateJokeReactions(3, jokeId)
         /////////////////////////////////////////////// Send patch to backend
     })
     
@@ -312,6 +320,10 @@ function makeMainSection(jokeId, jokeHead, nLol, nMeh, nTom, nComments){
     punchlineBtn.addEventListener('click',function(){
         console.log('add punchline clicked') 
         modalBgPunchline.classList.add('bg-active');
+        if(localStorage.getItem('jokeId')){
+            localStorage.clear()
+        }
+        localStorage.setItem('jokeId', jokeId)
     });
 
     let giphyBtn = document.createElement('button') // -> event listener
@@ -398,7 +410,7 @@ function makeMainSection(jokeId, jokeHead, nLol, nMeh, nTom, nComments){
 ///////////////////////////////////////////////////////////////
 
 
-function makeCommentSection(jokeId, lineText, nLol, nMeh, nTom){
+function makeCommentSection(jokeId, lineText, nLol, nMeh, nTom, commentId){
     //Make div for punchline section
     const sectionDiv = document.createElement('div')
     // sectionDiv.className = 'punchline-section'
@@ -436,6 +448,7 @@ function makeCommentSection(jokeId, lineText, nLol, nMeh, nTom){
     //////////////////////Event listener
     emojiLolCommentA.addEventListener('click',function(){
         console.log('lol emoji clicked')
+        fetchFunctions.updateCommentReaction(1, jokeId, commentId)
         //////////////////////////////////////////// Send patch to backend 
     })
 
@@ -457,6 +470,8 @@ function makeCommentSection(jokeId, lineText, nLol, nMeh, nTom){
     //////////////////////Event listener
     emojiMehCommentA.addEventListener('click', function(){
         console.log('meh emoji clicked')
+        fetchFunctions.updateCommentReaction(2, jokeId, commentId)
+
         ////////////////////////////////////////// Send patch to backend
     })
     
@@ -478,6 +493,15 @@ function makeCommentSection(jokeId, lineText, nLol, nMeh, nTom){
     emojiTomCommentA.textContent = '🍅'
 
     //////////////////////Event listener
+    emojiTomCommentA.addEventListener('click', function(){
+        console.log('meh emoji clicked')
+        fetchFunctions.updateCommentReaction(3, jokeId, commentId)
+
+    ////////////////////////////////////////// Send patch to backend
+    })
+
+
+
 
     const emojiTomCommentSpan = document.createElement('span')
     emojiTomCommentSpan.className = 'emoji-counter'

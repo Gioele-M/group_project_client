@@ -143,7 +143,39 @@ searchBtn.addEventListener("click", e => {
 
 
 
+//////////////////////////////////
+//add dark mode
+/////////////////////////////////
+const darkbtn = document.getElementById("darkmodebtn")
+let darkOnChecker = false
 
+darkbtn.addEventListener('click',function(){
+    if (darkOnChecker === false){
+    console.log('dark mode  clicked') 
+    document.body.style.backgroundColor="black"
+    document.body.style.color="white"
+    darkOnChecker = true
+}
+else {
+    console.log('dark mode  clicked') 
+    document.body.style.backgroundColor="white"
+    document.body.style.color="black"
+    darkOnChecker = false
+    }
+   
+
+})
+
+//////////////////////////////////
+//add about
+/////////////////////////////////
+const aboutbtn = document.getElementById("aboutbtn")
+
+aboutbtn.addEventListener('click',function(){
+    
+    console.log('about clicked') 
+    alert("THIS IS MADE BY NASIM, TOM, REBECCA, GIO");
+})
 
 
 
@@ -174,7 +206,7 @@ fetchFunctions.getAllJokes().then(data=>{
         
         for(const comment of comments){
 
-            const [jokeIdforComment, sectionDiv] = makeCommentSection(jokeId, comment.commentText, comment.commentReactions.emoji1, comment.commentReactions.emoji2, comment.commentReactions.emoji3)
+            const [jokeIdforComment, sectionDiv] = makeCommentSection(jokeId, comment.commentText, comment.commentReactions.emoji1, comment.commentReactions.emoji2, comment.commentReactions.emoji3, comment.commentID)
 
             commentsDiv.appendChild(sectionDiv)
 
@@ -245,15 +277,19 @@ postPunchlineBtn.addEventListener('click', (e)=>{
     // punchLineText
     const samplePostComment= {
         "commentID": 3,
-        "commentText": "Test comment",
+        "commentText": punchLineText.value,
         "commentReactions": {
           "emoji1": 0,
           "emoji2": 0,
           "emoji3": 0
         }
-    }
 
-    console.log(e)
+    }
+    let requestJokeId = localStorage.getItem('jokeId')
+    
+    fetchFunctions.postComment(samplePostComment, requestJokeId)
+    
+    console.log('Requested joke id: ' +requestJokeId)
 
 })
 
@@ -262,9 +298,7 @@ postPunchlineBtn.addEventListener('click', (e)=>{
 
 // Eventlistener local storage(?)
 
+//Try reloading the css
 
 
 
-
-
-// [data.id, data.jokeText, data.jokeEmoji, data.comments.length, data.jokeReactions]
