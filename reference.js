@@ -174,7 +174,7 @@ fetchFunctions.getAllJokes().then(data=>{
         
         for(const comment of comments){
 
-            const [jokeIdforComment, sectionDiv] = makeCommentSection(jokeId, comment.commentText, comment.commentReactions.emoji1, comment.commentReactions.emoji2, comment.commentReactions.emoji3)
+            const [jokeIdforComment, sectionDiv] = makeCommentSection(jokeId, comment.commentText, comment.commentReactions.emoji1, comment.commentReactions.emoji2, comment.commentReactions.emoji3, comment.commentID)
 
             commentsDiv.appendChild(sectionDiv)
 
