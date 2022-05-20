@@ -245,15 +245,19 @@ postPunchlineBtn.addEventListener('click', (e)=>{
     // punchLineText
     const samplePostComment= {
         "commentID": 3,
-        "commentText": "Test comment",
+        "commentText": punchLineText.value,
         "commentReactions": {
           "emoji1": 0,
           "emoji2": 0,
           "emoji3": 0
         }
-    }
 
-    console.log(e)
+    }
+    let requestJokeId = localStorage.getItem('jokeId')
+    
+    fetchFunctions.postComment(samplePostComment, requestJokeId)
+    
+    console.log('Requested joke id: ' +requestJokeId)
 
 })
 
@@ -262,9 +266,7 @@ postPunchlineBtn.addEventListener('click', (e)=>{
 
 // Eventlistener local storage(?)
 
+//Try reloading the css
 
 
 
-
-
-// [data.id, data.jokeText, data.jokeEmoji, data.comments.length, data.jokeReactions]

@@ -312,6 +312,10 @@ function makeMainSection(jokeId, jokeHead, nLol, nMeh, nTom, nComments){
     punchlineBtn.addEventListener('click',function(){
         console.log('add punchline clicked') 
         modalBgPunchline.classList.add('bg-active');
+        if(localStorage.getItem('jokeId')){
+            localStorage.clear()
+        }
+        localStorage.setItem('jokeId', jokeId)
     });
 
     let giphyBtn = document.createElement('button') // -> event listener

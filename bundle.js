@@ -313,6 +313,10 @@ function makeMainSection(jokeId, jokeHead, nLol, nMeh, nTom, nComments){
     punchlineBtn.addEventListener('click',function(){
         console.log('add punchline clicked') 
         modalBgPunchline.classList.add('bg-active');
+        if(localStorage.getItem('jokeId')){
+            localStorage.clear()
+        }
+        localStorage.setItem('jokeId', jokeId)
     });
 
     let giphyBtn = document.createElement('button') // -> event listener
@@ -1177,15 +1181,19 @@ postPunchlineBtn.addEventListener('click', (e)=>{
     // punchLineText
     const samplePostComment= {
         "commentID": 3,
-        "commentText": "Test comment",
+        "commentText": punchLineText.value,
         "commentReactions": {
           "emoji1": 0,
           "emoji2": 0,
           "emoji3": 0
         }
-    }
 
-    console.log(e)
+    }
+    let requestJokeId = localStorage.getItem('jokeId')
+    
+    fetchFunctions.postComment(samplePostComment, requestJokeId)
+    
+    console.log('Requested joke id: ' +requestJokeId)
 
 })
 
@@ -1194,11 +1202,9 @@ postPunchlineBtn.addEventListener('click', (e)=>{
 
 // Eventlistener local storage(?)
 
+//Try reloading the css
 
 
 
-
-
-// [data.id, data.jokeText, data.jokeEmoji, data.comments.length, data.jokeReactions]
 
 },{"./completeIndex":1,"./fetch_functions":2}]},{},[3]);
